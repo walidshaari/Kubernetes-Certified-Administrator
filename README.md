@@ -77,9 +77,9 @@ These are the exam objectives you review and understand in order to pass the tes
 * [Understand CNI](https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/)
 
 ### Cluster Maintenance 11%
-* [Understand Kubernetes cluster upgrade process]
-* [Facilitate operating system upgrades]
-* [Implement backup and restore methodologies](
+* [Understand Kubernetes cluster upgrade process](https://kubernetes.io/docs/getting-started-guides/ubuntu/upgrades/)
+* [Facilitate operating system upgrades](https://cloud.google.com/container-engine/docs/clusters/upgrade) #need review to make it more platform agnostic
+* [Implement backup and restore methodologies](https://kubernetes.io/docs/getting-started-guides/ubuntu/backups/)
 
 
 ### [Troubleshooting](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/) 10%
@@ -94,12 +94,12 @@ These are the exam objectives you review and understand in order to pass the tes
 
 
 
-### Storage 7%
-* [Understand persistent volumes and know how to create them.
-* [Understand access modes for volumes.
-* [Understand persistent volume claims primitive.
-* [Understand Kubernetes storage objects.
-* [Know how to configure applications with persistent storage.
+### [Storage](https://kubernetes.io/docs/concepts/storage/volumes/) 7%
+* [Understand persistent volumes and know how to create them](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
+* [Understand access modes for volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes)
+* [Understand persistent volume claims primitive](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims)
+* [Understand Kubernetes storage objects](https://kubernetes.io/docs/concepts/storage/volumes/#types-of-volumes)
+* [Know how to configure applications with persistent storage](https://kubernetes.io/docs/tasks/configure-pod-container/configure-volume-storage/)
 
 
 
