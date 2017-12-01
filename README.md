@@ -5,7 +5,7 @@ Disclaimer: This is not likely the comprehensive timely updated complete list as
 
 I tried to restrict the cross references of resources to Kuberntes.io. youtube videos and other blog resources are optional, however, I still them useful in my k8s learning journey.
  
-Ensure you have the right version of kubernetes documentation selected (e.g. v1.6.2 for the current exam) espically for API objects and annottations. 
+Ensure you have the right version of kubernetes documentation selected (e.g. v1.8 for the current exam) espically for API objects and annottations. 
 
 ## Exam Objectives
 
