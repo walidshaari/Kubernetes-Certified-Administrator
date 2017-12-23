@@ -23,7 +23,29 @@ These are the exam objectives you review and understand in order to pass the tes
 * [Understand Services and other network primitives](https://kubernetes.io/docs/concepts/services-networking/service/)
   * youtube: [Life of a Packet [I] - Michael Rubin, Google](https://www.youtube.com/watch?v=0Omvgd7Hg1I)
   * youtube: [The ins and outs of networking in Google Container Engine and Kubernetes (Google Cloud Next '17)](https://www.youtube.com/watch?v=y2bhV81MfKQ)
-
+  
+*  Example Nginx deployment:
+```yaml
+apiVersion: apps/v1beta2 # for versions before 1.8.0 use apps/v1beta1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.7.9
+        ports:
+        - containerPort: 80
+```
 ### [Installation, Configuration and Validation](https://github.com/kelseyhightower/kubernetes-the-hard-way/tree/f9486b081f8f54dd63a891463f0b0e783d084307) 12%
 * Design a Kubernetes cluster
 * [Install Kubernetes masters and nodes, including the use of TLS bootstrapping](https://kubernetes.io/docs/getting-started-guides/scratch/)
