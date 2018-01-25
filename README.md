@@ -55,24 +55,24 @@ spec:
 * [Provision underlying infrastructure to deploy a Kubernetes cluster](https://github.com/kelseyhightower/kubernetes-the-hard-way/blob/f9486b081f8f54dd63a891463f0b0e783d084307/docs/01-infrastructure-gcp.md)
 * [Choose a network solution](https://kubernetes.io/docs/getting-started-guides/scratch/#network)
 * Choose your Kubernetes infrastructure configuration
-* Run end-to-end tests on your cluster
-```
-$ kubectl cluster-info
-$ kubectl get nodes
-$ kubectl get pods -o wide --show-labels --all-namespaces
-$ kubectl get svc  -o wide --show-labels --all-namespaces
-```
-
-  run a simple deployment, check out https://kubernetes.io/docs/tutorials/
-
-* Analyse end-to-end tests results
-* Run Node end-to-end tests
+* [Run end-to-end tests on your cluster]
+ * [Using CNCF k8s conformance](https://github.com/cncf/k8s-conformance/blob/master/instructions.md)
+ * [Heptio Sonobuoy Scanner](https://scanner.heptio.com/)
 
 ### Security 12%
+* [Securing a kubernetes cluster](https://kubernetes.io/docs/tasks/administer-cluster/securing-a-cluster/)
+    * youtube: [Building for Trust: How to Secure Your Kubernetes Cluster [I] - Alexander Mohr & Jess Frazelle](https://www.youtube.com/watch?v=YRR-kZub0cA)
 * [Know how to configure authentication and authorization](https://kubernetes.io/docs/admin/authorization/rbac/)
-* Understand Kubernetes security primitives
+  * [Access the api](https://kubernetes.io/docs/admin/accessing-the-api/)
+  * [Authentication]()
+  * [Authorization with RBAC](https://kubernetes.io/docs/admin/authorization/rbac/)
+  * [Admission Control](https://kubernetes.io/docs/admin/admission-controllers/)
+* [Understand Kubernetes security primitives]
+  * [Pod Security Policy](https://kubernetes.io/docs/concepts/policy/pod-security-policy/)
+    * [PSP and RBAC](https://github.com/kubernetes/examples/blob/master/staging/podsecuritypolicy/rbac/README.md)
 * [Know to configure network policies](https://kubernetes.io/docs/tasks/administer-cluster/declare-network-policy/)
   * [Blog: Kubernetes network policy](https://ahmet.im/blog/kubernetes-network-policy/)
+  * [Katacoda Calico](https://www.katacoda.com/projectcalico/scenarios/calico)
 * [Create and manage TLS certificates for cluster components](https://kubernetes.io/docs/tasks/tls/managing-tls-in-a-cluster/)
 * Work with images securely
 * [Define security contexts](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/)
@@ -83,6 +83,8 @@ $ kubectl get svc  -o wide --show-labels --all-namespaces
 * [Understand the networking configuration on the cluster nodes](https://kubernetes.io/docs/concepts/cluster-administration/networking/)
 * Understand Pod networking concepts
   * youtube: [The ins and outs of networking in Google Container Engine and Kubernetes (Google Cloud Next '17)](https://www.youtube.com/watch?v=y2bhV81MfKQ)
+  * youtube: [Networking with Kubernetes](https://www.youtube.com/watch?v=WwQ62OyCNz4)
+  * [Illustrated Guide To Kubernetes Networking by Tim Hockin](https://speakerdeck.com/thockin/illustrated-guide-to-kubernetes-networking)
 * Understand service networking
   * youtube: [Life of a Packet [I] - Michael Rubin, Google](https://www.youtube.com/watch?v=0Omvgd7Hg1I)
 * [Deploy and configure network load balancer](https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/)
@@ -95,14 +97,17 @@ $ kubectl get svc  -o wide --show-labels --all-namespaces
     * Best resource upgrade is to watch [TGI Kubernetes 011: Upgrading to 1.8 with kubeadm](https://youtu.be/x9doB5eJWgQ)
 * [Facilitate operating system upgrades](https://cloud.google.com/container-engine/docs/clusters/upgrade) #need review to make it more platform agnostic
 * [Implement backup and restore methodologies](https://kubernetes.io/docs/getting-started-guides/ubuntu/backups/)
+* [Etcd management/backups/restore](https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/)
+
 
 ### [Troubleshooting](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/) 10%
 * [Troubleshoot application failure](https://kubernetes.io/docs/tasks/debug-application-cluster/determine-reason-pod-failure/)
   * [Application Introspection and Debugging](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application-introspection/)
-* Troubleshoot control plane failure
+  * [Services](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-service/)
+* [Troubleshoot control plane failure](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-cluster/)
   * youtube [Kubernetes Day 2: Cluster Operations [I] - Brandon Philips, CoreOS](https://www.youtube.com/watch?v=U1zR0eDQRYQ)
   * Safaribooksonline: [https://www.safaribooksonline.com/library/view/oscon-2016-video/9781491965153/video246982.html](https://www.safaribooksonline.com/library/view/oscon-2016-video/9781491965153/video246982.html)
-* Troubleshoot worker node failure
+* [Troubleshoot worker node failure](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-cluster/)
 * Troubleshoot networking
 
 ### [Storage](https://kubernetes.io/docs/concepts/storage/volumes/) 7%
@@ -134,6 +139,7 @@ $ kubectl get svc  -o wide --show-labels --all-namespaces
 * [Know how to configure the Kubernetes scheduler]
 
 ### [Logging/Monitoring](https://kubernetes.io/docs/concepts/cluster-administration/logging/) 5%
+* [Monitoring Kubernetes](https://www.datadoghq.com/blog/monitoring-kubernetes-era/)
 * [Understand how to monitor all cluster components](https://kubernetes.io/docs/tasks/debug-application-cluster/resource-usage-monitoring/)
 * Understand how to monitor applications
 * Manage cluster component logs
@@ -166,3 +172,6 @@ get familiar with:
 kubectl create service clusterip my-svc -o yaml --dry-run > /tmp/srv.yaml
 kubectl create --edit -f /tmp/srv.yaml
 ```
+## Do you want more?
+
+- [Kubernauts resources list](https://docs.google.com/spreadsheets/d/10NltoF_6y3mBwUzQ4bcQLQfCE1BWSgUDcJXy-Qp2JEU/edit#gid=0)
