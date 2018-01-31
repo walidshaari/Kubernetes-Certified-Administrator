@@ -150,7 +150,7 @@ spec:
   * Worker Nodes
     * /var/log/kubelet.log - Kubelet, responsible for running containers on the node
     * /var/log/kube-proxy.log - Kube Proxy, responsible for service load balancing
-* [Manage application logs](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#logs)
+* [Manage application logs](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs)
 
 ## Tips:
 
