@@ -131,7 +131,7 @@ $ kubectl get svc  -o wide --show-labels --all-namespaces
 ```
   $kubectl describe pods <POD NAME UNDER Investigation>  | grep -A7 ^Events
 ```
-* [Know how to configure the Kubernetes scheduler]
+* [Know how to configure the Kubernetes scheduler](https://kubernetes.io/docs/tasks/administer-cluster/configure-multiple-schedulers/)
 
 ### [Logging/Monitoring](https://kubernetes.io/docs/concepts/cluster-administration/logging/) 5%
 * [Understand how to monitor all cluster components](https://kubernetes.io/docs/tasks/debug-application-cluster/resource-usage-monitoring/)
