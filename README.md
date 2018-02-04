@@ -55,7 +55,9 @@ spec:
 * [Provision underlying infrastructure to deploy a Kubernetes cluster](https://github.com/kelseyhightower/kubernetes-the-hard-way/blob/f9486b081f8f54dd63a891463f0b0e783d084307/docs/01-infrastructure-gcp.md)
 * [Choose a network solution](https://kubernetes.io/docs/getting-started-guides/scratch/#network)
 * Choose your Kubernetes infrastructure configuration
-* Run end-to-end tests on your cluster
+* Choose your Kubernetes infrastructure configuration
+* Run end-to-end tests on your cluster.    
+    * Some simple commands will cover most cases:
 ```
 $ kubectl cluster-info
 $ kubectl get nodes
