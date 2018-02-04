@@ -55,9 +55,17 @@ spec:
 * [Provision underlying infrastructure to deploy a Kubernetes cluster](https://github.com/kelseyhightower/kubernetes-the-hard-way/blob/f9486b081f8f54dd63a891463f0b0e783d084307/docs/01-infrastructure-gcp.md)
 * [Choose a network solution](https://kubernetes.io/docs/getting-started-guides/scratch/#network)
 * Choose your Kubernetes infrastructure configuration
-* [Run end-to-end tests on your cluster]
- * [Using CNCF k8s conformance](https://github.com/cncf/k8s-conformance/blob/master/instructions.md)
- * [Heptio Sonobuoy Scanner](https://scanner.heptio.com/)
+* Run end-to-end tests on your cluster
+```
+$ kubectl cluster-info
+$ kubectl get nodes
+$ kubectl get pods -o wide --show-labels --all-namespaces
+$ kubectl get svc  -o wide --show-labels --all-namespaces
+```
+ * For more advanced testing, which may not be covered on the exam, also see:
+  * [End-To-End Testing in Kubernetes](https://github.com/kubernetes/community/blob/master/contributors/devel/e2e-tests.md)
+  * [Using CNCF k8s conformance](https://github.com/cncf/k8s-conformance/blob/master/instructions.md)
+  * [Heptio Sonobuoy Scanner](https://scanner.heptio.com/)
 
 ### Security 12%
 * [Securing a kubernetes cluster](https://kubernetes.io/docs/tasks/administer-cluster/securing-a-cluster/)
