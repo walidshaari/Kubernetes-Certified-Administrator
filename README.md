@@ -90,7 +90,8 @@ spec:
 * [Deploy and configure network load balancer](https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/)
 * [Know how to use Ingress rules](https://kubernetes.io/docs/concepts/services-networking/ingress/)
 * [Know how to configure and use the cluster DNS](https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/)
-* [Understand CNI](https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/)
+* [Understand CNI](https://github.com/containernetworking/cni)
+  * [More information on CNI](http://www.dasblinkenlichten.com/understanding-cni-container-networking-interface/)
 
 ### Cluster Maintenance 11%
 * [Understand Kubernetes cluster upgrade process](https://kubernetes.io/docs/getting-started-guides/ubuntu/upgrades/)
