@@ -62,10 +62,10 @@ $ kubectl get nodes
 $ kubectl get pods -o wide --show-labels --all-namespaces
 $ kubectl get svc  -o wide --show-labels --all-namespaces
 ```
- * For more advanced testing, which may not be covered on the exam, also see:
-  * [End-To-End Testing in Kubernetes](https://github.com/kubernetes/community/blob/master/contributors/devel/e2e-tests.md)
-  * [Using CNCF k8s conformance](https://github.com/cncf/k8s-conformance/blob/master/instructions.md)
-  * [Heptio Sonobuoy Scanner](https://scanner.heptio.com/)
+    * For more advanced testing, which may not be covered on the exam, also see:
+      * [End-To-End Testing in Kubernetes](https://github.com/kubernetes/community/blob/master/contributors/devel/e2e-tests.md)
+      * [Using CNCF k8s conformance](https://github.com/cncf/k8s-conformance/blob/master/instructions.md)
+      * [Heptio Sonobuoy Scanner](https://scanner.heptio.com/)
 
 ### Security 12%
 * [Securing a kubernetes cluster](https://kubernetes.io/docs/tasks/administer-cluster/securing-a-cluster/)
