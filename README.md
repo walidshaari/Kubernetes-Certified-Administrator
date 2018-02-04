@@ -61,6 +61,7 @@ spec:
 ```
 $ kubectl cluster-info
 $ kubectl get nodes
+$ kubectl get componentstatuses
 $ kubectl get pods -o wide --show-labels --all-namespaces
 $ kubectl get svc  -o wide --show-labels --all-namespaces
 ```
