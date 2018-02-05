@@ -55,9 +55,21 @@ spec:
 * [Provision underlying infrastructure to deploy a Kubernetes cluster](https://github.com/kelseyhightower/kubernetes-the-hard-way/blob/f9486b081f8f54dd63a891463f0b0e783d084307/docs/01-infrastructure-gcp.md)
 * [Choose a network solution](https://kubernetes.io/docs/getting-started-guides/scratch/#network)
 * Choose your Kubernetes infrastructure configuration
-* [Run end-to-end tests on your cluster]
- * [Using CNCF k8s conformance](https://github.com/cncf/k8s-conformance/blob/master/instructions.md)
- * [Heptio Sonobuoy Scanner](https://scanner.heptio.com/)
+* Choose your Kubernetes infrastructure configuration
+* Run end-to-end tests on your cluster    
+  * Some simple commands will cover most cases:
+```
+$ kubectl cluster-info
+$ kubectl get nodes
+$ kubectl get componentstatuses
+$ kubectl get pods -o wide --show-labels --all-namespaces
+$ kubectl get svc  -o wide --show-labels --all-namespaces
+```
+
+* For more advanced end to end testing, which may not be covered on the exam, also see:
+     * [End-To-End Testing in Kubernetes](https://github.com/kubernetes/community/blob/master/contributors/devel/e2e-tests.md)
+     * [Using CNCF k8s conformance](https://github.com/cncf/k8s-conformance/blob/master/instructions.md)
+     * [Heptio Sonobuoy Scanner](https://scanner.heptio.com/)
 
 ### Security 12%
 * [Securing a kubernetes cluster](https://kubernetes.io/docs/tasks/administer-cluster/securing-a-cluster/)
@@ -90,7 +102,8 @@ spec:
 * [Deploy and configure network load balancer](https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/)
 * [Know how to use Ingress rules](https://kubernetes.io/docs/concepts/services-networking/ingress/)
 * [Know how to configure and use the cluster DNS](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/)
-* [Understand CNI](https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/)
+* [Understand CNI](https://github.com/containernetworking/cni)
+  * [More information on CNI](http://www.dasblinkenlichten.com/understanding-cni-container-networking-interface/)
 
 ### Cluster Maintenance 11%
 * [Understand Kubernetes cluster upgrade process](https://kubernetes.io/docs/getting-started-guides/ubuntu/upgrades/)
