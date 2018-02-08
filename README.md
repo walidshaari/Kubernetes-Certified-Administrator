@@ -6,7 +6,7 @@ Online resources that will help you prepare for taking the Kubernetes Certified 
 
 I tried to restrict the cross references of resources to [kubernetes.io](kubernetes.io). Youtube videos and other blog resources are optional; however, I still found them useful in my k8s learning journey.
 
-Ensure you have the right version of Kubernetes documentation selected (e.g. v1.8 for the current exam) especially for API objects and annotations.
+Ensure you have the right version of Kubernetes documentation selected (e.g. v1.9 for the current exam) especially for API objects and annotations.
 
 ## Exam Objectives
 
@@ -15,7 +15,7 @@ These are the exam objectives you review and understand in order to pass the tes
 * [CNCF Exam Curriculum repository ](https://github.com/cncf/curriculum)
 
 ### [Core Concepts](https://v1-8.docs.kubernetes.io/docs/concepts/) 19%
-* [Understand the Kubernetes API primitives](https://v1-8.docs.kubernetes.io/docs/api-reference/v1.8/)
+* [Understand the Kubernetes API primitives](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.9/)
   * [concepts: Kubernetes Objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/)
   * youtube: [Kubernetes Webinar Series - Kubernetes Architecture 101](https://www.youtube.com/watch?v=zeS6OyDoy78)
 * [Understand the Kubernetes cluster architecture](https://kubernetes.io/docs/concepts/overview/components/)
@@ -110,7 +110,7 @@ $ kubectl get svc  -o wide --show-labels --all-namespaces
     * Best resource upgrade is to watch [TGI Kubernetes 011: Upgrading to 1.8 with kubeadm](https://youtu.be/x9doB5eJWgQ)
 * [Facilitate operating system upgrades](https://cloud.google.com/container-engine/docs/clusters/upgrade) #need review to make it more platform agnostic
 * [Implement backup and restore methodologies](https://kubernetes.io/docs/getting-started-guides/ubuntu/backups/)
-* [Etcd management/backups/restore](https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/)
+* [Etcd management/backups/restore](https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd)
 
 
 ### [Troubleshooting](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/) 10%
@@ -131,9 +131,9 @@ $ kubectl get svc  -o wide --show-labels --all-namespaces
 * [Know how to configure applications with persistent storage](https://kubernetes.io/docs/tasks/configure-pod-container/configure-volume-storage/)
 
 ### Application Lifecycle Management 8%
-* Understand Deployments and how to perform rolling updates and rollbacks
-* Know various ways to configure applications
-* Know how to scale applications
+* [Understand Deployments and how to perform rolling updates and rollbacks](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
+* [Know various ways to configure applications](https://kubernetes.io/docs/concepts/cluster-administration/manage-deployment/)
+* [Know how to scale applications](https://kubernetes.io/docs/concepts/cluster-administration/manage-deployment/#scaling-your-application)
 * Understand the primitives necessary to create a self-healing application
 
 ### Scheduling 5%
