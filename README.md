@@ -6,7 +6,7 @@ Online resources that will help you prepare for taking the Kubernetes Certified 
 
 I tried to restrict the cross references of resources to [kubernetes.io](kubernetes.io). Youtube videos and other blog resources are optional; however, I still found them useful in my k8s learning journey.
 
-Ensure you have the right version of Kubernetes documentation selected (e.g. v1.9 for the current exam) especially for API objects and annotations.
+Ensure you have the right version of Kubernetes documentation selected (e.g. v1.10.2 as of May 2018 exam) especially for API objects and annotations.
 
 ## Exam Objectives
 
@@ -155,8 +155,9 @@ $ kubectl get svc  -o wide --show-labels --all-namespaces
 ### [Logging/Monitoring](https://kubernetes.io/docs/concepts/cluster-administration/logging/) 5%
 * [Monitoring Kubernetes](https://www.datadoghq.com/blog/monitoring-kubernetes-era/)
 * [Understand how to monitor all cluster components](https://kubernetes.io/docs/tasks/debug-application-cluster/resource-usage-monitoring/)
+* [Pod and Node metrics](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#interacting-with-running-pods)
 * Understand how to monitor applications
-* Manage cluster component logs
+* [Manage cluster component logs](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-cluster/#looking-at-logs)
   * Master
     * /var/log/kube-apiserver.log - API Server, responsible for serving the API
     * /var/log/kube-scheduler.log - Scheduler, responsible for making scheduling decisions
