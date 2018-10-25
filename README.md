@@ -76,7 +76,7 @@ $ kubectl get svc  -o wide --show-labels --all-namespaces
     * youtube: [Building for Trust: How to Secure Your Kubernetes Cluster [I] - Alexander Mohr & Jess Frazelle](https://www.youtube.com/watch?v=YRR-kZub0cA)
 * [Know how to configure authentication and authorization](https://kubernetes.io/docs/admin/authorization/rbac/)
   * [Access the api](https://kubernetes.io/docs/admin/accessing-the-api/)
-  * [Authentication]()
+  * [Authentication](https://kubernetes.io/docs/reference/access-authn-authz/authentication/)
   * [Authorization with RBAC](https://kubernetes.io/docs/admin/authorization/rbac/)
   * [Admission Control](https://kubernetes.io/docs/admin/admission-controllers/)
 * [Understand Kubernetes security primitives]
