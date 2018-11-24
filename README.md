@@ -16,7 +16,7 @@ These are the exam objectives you review and understand in order to pass the tes
 
 
 ### [Core Concepts](https://kubernetes.io/docs/concepts/) 19%
-* [Understand the Kubernetes API primitives](https://v1-9.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.9/)
+* [Understand the Kubernetes API primitives](https://v1-11.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.11/)
   * [concepts: Kubernetes Objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/)
   * youtube: [Kubernetes Webinar Series - Kubernetes Architecture 101](https://www.youtube.com/watch?v=zeS6OyDoy78)
 * [Understand the Kubernetes cluster architecture](https://kubernetes.io/docs/concepts/overview/components/)
