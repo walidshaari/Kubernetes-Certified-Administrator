@@ -165,7 +165,8 @@ $ kubectl get svc  -o wide --show-labels --all-namespaces
     * /var/log/kubelet.log - Kubelet, responsible for running containers on the node
     * /var/log/kube-proxy.log - Kube Proxy, responsible for service load balancing
 * [Manage application logs](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs)
-
+## Practice Exam
+* [CKA Practice Exam Environment](https://github.com/arush-sal/cka-practice-environment)
 ## Tips:
 
 get familiar with:
