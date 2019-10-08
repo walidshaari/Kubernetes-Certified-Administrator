@@ -172,7 +172,7 @@ $ kubectl get svc  -o wide --show-labels --all-namespaces
 get familiar with:
 * [kubectl explain](https://blog.heptio.com/kubectl-explain-heptioprotip-ee883992a243)
 * [kubectl cheatsheet](https://kubernetes.io/docs/user-guide/kubectl-cheatsheet/)
-* When using kubecctl for investigations and troubleshooting utilize the wide output it gives your more details
+* When using kubectl for investigations and troubleshooting utilize the wide output it gives your more details
 ```
      $kubectl get pods -o wide --show-labels --all-namespaces
 ```
