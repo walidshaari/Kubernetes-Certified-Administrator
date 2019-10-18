@@ -67,7 +67,7 @@ $ kubectl get svc  -o wide --show-labels --all-namespaces
 ```
 
 * For more advanced end to end testing, which may not be covered on the exam, also see:
-     * [End-To-End Testing in Kubernetes](https://github.com/kubernetes/community/blob/master/contributors/devel/e2e-tests.md)
+     * [End-To-End Testing in Kubernetes](https://github.com/kubernetes/community/blob/master/contributors/devel/sig-testing/e2e-tests.md)
      * [Using CNCF k8s conformance](https://github.com/cncf/k8s-conformance/blob/master/instructions.md)
      * [Heptio Sonobuoy Scanner](https://scanner.heptio.com/)
 
