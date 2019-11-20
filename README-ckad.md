@@ -6,7 +6,7 @@ to those materials coming from the allowed sources [kubernetes.io](kubernetes.io
 
 _Before to start_ 
 
-Ensure you have the right version of Kubernetes documentation selected (e.g. v1.15  for the current exam) especially for API objects and annotations.
+Ensure you have the right version of Kubernetes documentation selected (e.g. v1.16 as of 20th Nov. 2019 exam) especially for API objects and annotations. This release removes several deprecated API's. 
 
 
 ## Exam Objectives
