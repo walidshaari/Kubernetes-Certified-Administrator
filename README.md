@@ -6,7 +6,7 @@ Online resources that will help you prepare for taking the Kubernetes Certified 
 
 I tried to restrict the cross references of resources to [kubernetes.io](kubernetes.io). Youtube videos and other blog resources are optional; however, I still found them useful in my k8s learning journey.
 
-Ensure you have the right version of Kubernetes documentation selected (e.g. v1.18 as of 23rd April 2020 exam) especially for API objects and annotations.  
+Ensure you have the right version of Kubernetes documentation selected (e.g. v1.18 as of 23rd April 2020 exam) especially for API objects and annotations.
 
 ## Exam Objectives
 
@@ -187,6 +187,7 @@ get familiar with:
 kubectl create service clusterip my-svc -o yaml --dry-run > /tmp/srv.yaml
 kubectl create --edit -f /tmp/srv.yaml
 ```
+* [Be fast with kubectl in 1.18](https://medium.com/faun/be-fast-with-kubectl-1-18-ckad-cka-31be00acc443)
 ## Do you want more?
 
 - [Kubernauts resources list](https://docs.google.com/spreadsheets/d/10NltoF_6y3mBwUzQ4bcQLQfCE1BWSgUDcJXy-Qp2JEU/edit#gid=0)
