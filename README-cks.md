@@ -38,6 +38,26 @@ These are the exam objectives you review and understand in order to pass the tes
 * [Appropriately use kernel hardening tools such as AppArmor, seccomp]()
 
 
+### 15% [System Hardening]()
+
+* [Minimize host OS footprint (reduce attack surface)[]
+* [Minimize IAM roles]()
+* [Minimize external access to the network]()
+* [Appropriately use kernel hardening tools such as AppArmor, seccomp]()
+
+    !? where is selinux? assume exam systems are ubuntu
+
+### 20% [Minimize Microservice Vulnerabilities]()
+
+* [Setup appropriate OS level security domains e.g. using PSP, OPA, security contexts]()
+* [• Manage kubernetes secrets]()
+* [Use container runtime sandboxes in multi-tenant environments (e.g. gvisor, kata containers)]()
+* [Implement pod to pod encryption by use of mTLS]()
+
+
+
 ### Extra Kubernetes security resources
-* [Aquasecurity Blogs]()
-* 
+* [Aquasecurity Blogs](https://blog.aquasec.com/)
+* [control-plane/Andrew Martin @sublimino: 11 ways not to get hacked](https://control-plane.io/posts/11-ways-not-to-get-hacked/)
+* [InGuardians/Jay Beale: Kuberntes Practical attackes and defenses](https://youtu.be/LtCx3zZpOfs)
+* [Google/Ian Lewis : Kubernetes security best practices](https://youtu.be/wqsUfvRyYpw)
