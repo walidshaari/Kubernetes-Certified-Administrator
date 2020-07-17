@@ -75,5 +75,5 @@ These are the exam objectives you review and understand in order to pass the tes
 ### Extra Kubernetes security resources
 * [Aquasecurity Blogs](https://blog.aquasec.com/)
 * [control-plane/Andrew Martin @sublimino: 11 ways not to get hacked](https://control-plane.io/posts/11-ways-not-to-get-hacked/)
-* [InGuardians/Jay Beale: Kuberntes Practical attackes and defenses](https://youtu.be/LtCx3zZpOfs)
+* [InGuardians/Jay Beale: Kubernetes Practical attacks and defenses](https://youtu.be/LtCx3zZpOfs)
 * [Google/Ian Lewis : Kubernetes security best practices](https://youtu.be/wqsUfvRyYpw)
