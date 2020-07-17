@@ -6,8 +6,8 @@ Online resources that will help you prepare for taking the Kubernetes Certified 
 **Disclaimer**: This is not likely a comprehensive list as the exam is not out yet, most likely will be a moving target with the fast pace of k8s development
 - please make a pull request if there something wrong or that should be added, or updated in here.
 
-I tried to restrict the cross references of resources to [kubernetes.io](kubernetes.io). Youtube videos and other blog resources are optional.
-However, I still found them useful in my k8s learning journey.
+I will try to restrict the cross references of resources to [kubernetes.io](kubernetes.io) as CNCF/Linux Foundation allows you search **k8s.io**. Youtube videos and other resources e.g. blogs will be optional.
+Content is scarse, will get updates by me and other contributors as we prepare for the CKS exam journey.
 
 Ensure you have the right version of Kubernetes documentation selected (e.g. v1.19 as of 15th July announcement) especially for API objects and annotations.
 
@@ -40,7 +40,7 @@ These are the exam objectives you review and understand in order to pass the tes
 
 ### 15% System Hardening
 
-* [Minimize host OS footprint (reduce attack surface)[]
+* [Minimize host OS footprint (reduce attack surface)]()
 * [Minimize IAM roles]()
 * [Minimize external access to the network]()
 * [Appropriately use kernel hardening tools such as AppArmor, seccomp]()
