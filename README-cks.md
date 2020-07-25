@@ -77,3 +77,6 @@ These are the exam objectives you review and understand in order to pass the tes
 * [control-plane/Andrew Martin @sublimino: 11 ways not to get hacked](https://control-plane.io/posts/11-ways-not-to-get-hacked/)
 * [InGuardians/Jay Beale: Kubernetes Practical attacks and defenses](https://youtu.be/LtCx3zZpOfs)
 * [Google/Ian Lewis : Kubernetes security best practices](https://youtu.be/wqsUfvRyYpw)
+
+#### CVEs
+* [CNCF Kubernetes Security Anatomy and the Recently Disclosed CVEs (CVE-2020-8555, CVE-2020-8552)](https://youtu.be/Dp1RCYCpyJk)
