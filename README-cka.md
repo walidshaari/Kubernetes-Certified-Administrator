@@ -46,6 +46,7 @@ These are the exam objectives you review and understand in order to pass the tes
 * Understand the primitives necessary to create a self-healing application
 
 ### Cluster Maintenance 11%
+* [Upgrade kubeadm cluster](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/)
 * [Understand Kubernetes cluster upgrade process](https://kubernetes.io/docs/getting-started-guides/ubuntu/upgrades/)
 * [Facilitate operating system upgrades](https://cloud.google.com/container-engine/docs/clusters/upgrade) #need review to make it more platform agnostic
 * [Implement backup and restore methodologies](https://kubernetes.io/docs/getting-started-guides/ubuntu/backups/)
