@@ -1,4 +1,4 @@
-# Kubernetes Certified Administration
+# Kubernetes Certified Administration Test
 
 Online resources that will help you prepare for taking the Kubernetes Certified Administrator Certification exam.
 
@@ -28,7 +28,7 @@ These are the exam objectives you review and understand in order to pass the tes
 * [Understand Services and other network primitives](https://kubernetes.io/docs/concepts/services-networking/service/)
   * youtube: [Life of a Packet [I] - Michael Rubin, Google](https://www.youtube.com/watch?v=0Omvgd7Hg1I)
   * youtube: [The ins and outs of networking in Google Container Engine and Kubernetes (Google Cloud Next '17)](https://www.youtube.com/watch?v=y2bhV81MfKQ)
-  
+
 *  Example Nginx deployment:
 ```yaml
 apiVersion: apps/v1
