@@ -115,7 +115,7 @@ These are the exam objectives you review and understand in order to pass the tes
   * [configure/upgrade etcd](https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd)
 * [Configure secure cluster communications](https://kubernetes.io/docs/tasks/tls/managing-tls-in-a-cluster/)
 * [Configure a Highly-Available Kubernetes cluster](https://kubernetes.io/docs/admin/high-availability/)
-* [Know where to get the Kubernetes release binaries](https://kubernetes.io/docs/getting-started-guides/binary_release/#prebuilt-binary-release)
+* [Know where to get the Kubernetes release binaries](https://github.com/kubernetes/kubernetes/releases)
 * [Provision underlying infrastructure to deploy a Kubernetes cluster](https://github.com/kelseyhightower/kubernetes-the-hard-way/blob/f9486b081f8f54dd63a891463f0b0e783d084307/docs/01-infrastructure-gcp.md)
 * [Choose a network solution](https://kubernetes.io/docs/concepts/cluster-administration/networking/)
 * Choose your Kubernetes infrastructure configuration
