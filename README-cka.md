@@ -24,6 +24,7 @@ These are the exam objectives you review and understand in order to pass the tes
   $kubectl describe pods <POD NAME UNDER Investigation>  | grep -A7 ^Events
 ```
 * [Know how to configure the Kubernetes scheduler](https://kubernetes.io/docs/tasks/administer-cluster/configure-multiple-schedulers/)
+* [taint and toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/)
 
 ### [Logging/Monitoring](https://kubernetes.io/docs/concepts/cluster-administration/logging/) 5%
 * [Understand how to monitor all cluster components](https://kubernetes.io/docs/tasks/debug-application-cluster/resource-usage-monitoring/)
@@ -76,6 +77,10 @@ These are the exam objectives you review and understand in order to pass the tes
 * [Understand Kubernetes storage objects](https://kubernetes.io/docs/concepts/storage/volumes/#types-of-volumes)
 * [Know how to configure applications with persistent storage](https://kubernetes.io/docs/tasks/configure-pod-container/configure-volume-storage/)
 
+- [Claims as volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#claims-as-volumes)
+- [Configure a Pod to Use a PersistentVolume for Storage](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/
+)
+
 ### [Troubleshooting](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/) 10%
 * [Troubleshoot application failure](https://kubernetes.io/docs/tasks/debug-application-cluster/determine-reason-pod-failure/)
   * [Application Introspection and Debugging](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application-introspection/)
@@ -104,6 +109,9 @@ These are the exam objectives you review and understand in order to pass the tes
 ### [Installation, Configuration and Validation](https://github.com/kelseyhightower/kubernetes-the-hard-way/tree/f9486b081f8f54dd63a891463f0b0e783d084307) 12%
 * Design a Kubernetes cluster
 * [Install Kubernetes masters and nodes, including the use of TLS bootstrapping](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
+  * [Install kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+  * [kubeadm Upgrade](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/)
+  * [configure/upgrade etcd](https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd)
 * [Configure secure cluster communications](https://kubernetes.io/docs/tasks/tls/managing-tls-in-a-cluster/)
 * [Configure a Highly-Available Kubernetes cluster](https://kubernetes.io/docs/admin/high-availability/)
 * [Know where to get the Kubernetes release binaries](https://kubernetes.io/docs/getting-started-guides/binary_release/#prebuilt-binary-release)
@@ -128,6 +136,8 @@ $ kubectl get svc  -o wide --show-labels --all-namespaces
 ## Practice Exam
 * [CKA Practice Exam Environment](https://github.com/arush-sal/cka-practice-environment)
 ## Tips:
+
+* [kubectl commands](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands)
 
 get familiar with:
 * [kubectl explain](https://blog.heptio.com/kubectl-explain-heptioprotip-ee883992a243)
