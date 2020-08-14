@@ -1,15 +1,8 @@
 # Certified Kubernetes Security Specialist (CKS)  
-**Coming soon November 2020**
 
-Online resources that will help you prepare for taking the Kubernetes Certified Kubernetes Security Specialist Certification exam.
+_Before to start_
 
-**Disclaimer**: This is not likely a comprehensive list as the exam is not out yet, most likely will be a moving target with the fast pace of k8s development
-- please make a pull request if there something wrong or that should be added, or updated in here.
-
-I will try to restrict the cross references of resources to [kubernetes.io](kubernetes.io) as CNCF/Linux Foundation allows you search **k8s.io**. Youtube videos and other resources e.g. blogs will be optional.
-Content is scarse, will get updates by me and other contributors as we prepare for the CKS exam journey.
-
-Ensure you have the right version of Kubernetes documentation selected (e.g. v1.19 as of 15th July announcement) especially for API objects and annotations.
+Ensure you have the right version of Kubernetes documentation selected (e.g. v1.16 as of 20th Nov. 2019 exam) especially for API objects and annotations. This release removes several deprecated API's.
 
 ## Exam Objectives
 

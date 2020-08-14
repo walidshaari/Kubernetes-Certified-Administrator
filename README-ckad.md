@@ -1,12 +1,9 @@
 
 # Certified Kubernetes Application Developer (CKAD)
-A  curated list of resources that will help you to face your Kubernetes certification. Based in the newest policy about 'Resources Allowed', current list will give preference
-to those materials coming from the allowed sources [kubernetes.io](kubernetes.io). Others like Youtube videos, blog resources could be referenced in expectional case due to I still found them useful in my k8s learning journey.
 
+_Before to start_
 
-_Before to start_ 
-
-Ensure you have the right version of Kubernetes documentation selected (e.g. v1.16 as of 20th Nov. 2019 exam) especially for API objects and annotations. This release removes several deprecated API's. 
+Ensure you have the right version of Kubernetes documentation selected (e.g. v1.16 as of 20th Nov. 2019 exam) especially for API objects and annotations. This release removes several deprecated API's.
 
 
 ## Exam Objectives
@@ -44,9 +41,9 @@ These are the exam objectives you review and understand in order to pass the tes
 
 ### [Observability] 18%
 
-* [Understand LivenessProbes and ReadinessProbes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/) 
+* [Understand LivenessProbes and ReadinessProbes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/)
 * [Understand container logging](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs)
-* [Understand how to monitor applications in Kubernetes](https://kubernetes.io/docs/tasks/debug-application-cluster/resource-usage-monitoring/) 
+* [Understand how to monitor applications in Kubernetes](https://kubernetes.io/docs/tasks/debug-application-cluster/resource-usage-monitoring/)
     * [Monitoring Kubernetes](https://www.datadoghq.com/blog/monitoring-kubernetes-era/)
 * [Understand debugging in Kubernetes](https://kubernetes.io/docs/tasks/debug-application-cluster/determine-reason-pod-failure/)
     * [Application Introspection and Debugging](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application-introspection/)
@@ -61,7 +58,7 @@ These are the exam objectives you review and understand in order to pass the tes
 * Understand Jobs and CronJobs
     * [Job](https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/)
     * [CronJob](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/)
-    
+
 
 ### [Services and Networking] 13%
 
