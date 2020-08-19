@@ -9,7 +9,7 @@ I tried to restrict the cross references of resources to [kubernetes.io](kuberne
 Ensure you have the right version of Kubernetes documentation selected (e.g. v1.18 as of 23rd April 2020 exam) especially for API objects and annotations.
 
 ## Other CK exams:
-- [Certified Kubernetes Security Specialist CKS](./README-cks.md)
+- [Certified Kubernetes Security Specialist CKS](https://github.com/walidshaari/Certified-Kubernetes-Secuirty-Specialist)
 - [Certified Kubernetes Application Developer CKAD](./README-ckad.md)
 
 ## CKA Exam Objectives
