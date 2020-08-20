@@ -6,7 +6,7 @@ Online resources that will help you prepare for taking the Kubernetes Certified 
 
 I tried to restrict the cross references of resources to [kubernetes.io](kubernetes.io). Youtube videos and other blog resources are optional; however, I still found them useful in my k8s learning journey.
 
-Ensure you have the right version of Kubernetes documentation selected (e.g. v1.18 as of 23rd April 2020 exam) especially for API objects and annotations.
+Ensure you have the right version of Kubernetes documentation selected (e.g. v1.19 as of 1st Sept 2020 exam) especially for API objects and annotations.
 
 ## Other CK exams:
 - [Certified Kubernetes Security Specialist CKS](https://github.com/walidshaari/Certified-Kubernetes-Secuirty-Specialist)
