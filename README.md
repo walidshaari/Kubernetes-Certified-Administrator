@@ -28,7 +28,7 @@ These are the exam objectives you review and understand in order to pass the tes
 1. [implment etcd backup and restore](https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/#backing-up-an-etcd-cluster)
 
 ### Workloads & Scheduling – 15%
-1. Understand deployments and how to perform rolling update and rollbacks
+1. [Understand deployments and how to perform rolling update and rollbacks](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
 1. Use ConfigMaps and Secrets to configure applications
 1. Know how to scale applications
 1. Understand the primitives used to create robust, self-healing, application deployments
@@ -54,9 +54,9 @@ These are the exam objectives you review and understand in order to pass the tes
 
 ### Troubleshooting – 30%
 
-1. Evaluate cluster and node logging
-1. Understand how to monitor applications
-1. Manage container stdout & stderr logs
-1. Troubleshoot application failure
-1. Troubleshoot cluster component failure
-1. Troubleshoot networking
+1. [Evaluate cluster and node logging](https://kubernetes.io/docs/concepts/cluster-administration/logging/)
+1. [Understand how to monitor applications](https://kubernetes.io/docs/tasks/debug-application-cluster/resource-usage-monitoring/)
+1. [Manage container stdout & stderr logs](https://kubernetes.io/docs/concepts/cluster-administration/logging/#logging-at-the-node-level)
+1. [Troubleshoot application failure](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/)
+1. [Troubleshoot cluster component failure](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-cluster/)
+1. [Troubleshoot networking](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-cluster/)
