@@ -29,39 +29,36 @@ These are the exam objectives you review and understand in order to pass the tes
 
 ### Workloads & Scheduling – 15%
 1. [Understand deployments and how to perform rolling update and rollbacks](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
-1. Use [ConfigMaps](https://kubernetes.io/docs/concepts/configuration/configmap/) and [Secrets](https://kubernetes.io/docs/concepts/configuration/secret/) to configure applications
+2. Use [ConfigMaps](https://kubernetes.io/docs/concepts/configuration/configmap/) and [Secrets](https://kubernetes.io/docs/concepts/configuration/secret/) to configure applications
   - [configure a pod with a configmap](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/)
   - [configure a pod with a secret](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/)
-1. Know how to [scale applications](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#scaling-a-deployment)
+3. Know how to [scale applications](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#scaling-a-deployment)
   - [scaling a statefulset](https://kubernetes.io/docs/tasks/run-application/scale-stateful-set/)
   - [scaling a replicaset](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/#scaling-a-replicaset)
-1. Understand the primitives used to create robust, self-healing, application deployments
+4. Understand the primitives used to create robust, self-healing, application deployments
  - [Replicaset](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/)
  - [Deployments](https://v1-16.docs.kubernetes.io/docs/concepts/workloads/controllers/deployment/)
  - [Statefulsets](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/)
  - [Daemonset](https://v1-16.docs.kubernetes.io/docs/concepts/workloads/controllers/daemonset/)
- 
-1. Understand [how resource limits can affect Pod scheduling](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#how-pods-with-resource-requests-are-scheduled)
-1. Awareness of manifest management and common templating tools
-  - [Kustomize](https://kubernetes.io/docs/tasks/manage-kubernetes-objects/kustomization/)
+5. Understand [how resource limits can affect Pod scheduling](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#how-pods-with-resource-requests-are-scheduled)
+6. Awareness of manifest management and common templating tools
+  * [Kustomize](https://kubernetes.io/docs/tasks/manage-kubernetes-objects/kustomization/)
     - [Kustomize Blog](https://kubernetes.io/blog/2018/05/29/introducing-kustomize-template-free-configuration-customization-for-kubernetes/)
-  - [manage kubernetes objects](https://kubernetes.io/docs/tasks/manage-kubernetes-objects/)
-  - [Install service catalog using helm](https://kubernetes.io/docs/tasks/service-catalog/install-service-catalog-using-helm/)
-  - Non-k8s.io resource: External resource: [templating-yaml-with-code)](https://learnk8s.io/templating-yaml-with-code)
-
+  * [manage kubernetes objects](https://kubernetes.io/docs/tasks/manage-kubernetes-objects/)
+  * [Install service catalog using helm](https://kubernetes.io/docs/tasks/service-catalog/install-service-catalog-using-helm/)
+  * Non-k8s.io resource: External resource: [templating-yaml-with-code](https://learnk8s.io/templating-yaml-with-code)
 
 ### Services & Networking – 20% 
 
 1. Understand [host networking configuration on the cluster nodes](https://kubernetes.io/docs/concepts/cluster-administration/networking/)
-1. Understand connectivity between Pods
+2. Understand connectivity between Pods
   - [The concept of Pods networking](https://kubernetes.io/docs/concepts/workloads/pods/#pod-networking)
-
-1. Understand ClusterIP, NodePort, LoadBalancer service types and endpoints
+3. Understand ClusterIP, NodePort, LoadBalancer service types and endpoints
    - [service](https://kubernetes.io/docs/concepts/services-networking/service/)
-1. Know how to use [Ingress controllers](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/) and [Ingress resources](https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource)
+4. Know how to use [Ingress controllers](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/) and [Ingress resources](https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource)
   - [Ingress concepts]((https://kubernetes.io/docs/concepts/services-networking/ingress/))
-1. [Know how to configure and use CoreDNS](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/)
-1. [Choose an appropriate container network interface plugin](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network)
+5. [Know how to configure and use CoreDNS](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/)
+6. [Choose an appropriate container network interface plugin](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network)
 
 ### Storage – 10%
 
@@ -80,7 +77,34 @@ These are the exam objectives you review and understand in order to pass the tes
 1. [Troubleshoot cluster component failure](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-cluster/)
 1. [Troubleshoot networking](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-cluster/)
    - [DNS troubleshooting] (https://kubernetes.io/docs/tasks/administer-cluster/dns-debugging-resolution/)
-   
+
+
+## Tips:
+
+Get familiar with:
+* [kubectl explain --recurisve](https://blog.heptio.com/kubectl-explain-heptioprotip-ee883992a243)
+* [kubectl cheatsheet](https://kubernetes.io/docs/user-guide/kubectl-cheatsheet/)
+* When using kubectl for investigations and troubleshooting utilize the wide output it gives your more details
+```
+     $kubectl get pods -o wide  --show-labels  --all-namespaces
+     or
+     $kubectl get pods -o wide  --show-labels  -A     # -A is quicker than --all-namespaces
+```
+* In `kubectl` utilizie `--all-namespaces or better -A` to ensure deployments, pods, objects are on the right name space, and right desired state
+
+* for events and troubleshooting utilize kubectl describe if its pod/resource related and logs if it is application issue related
+```
+     $kubectl describe pods <PODID>   # for pod, deployment, other k8s resource issues/events
+     $kubectl logs <PODID>            # for container/application issues like crash loops
+     
+```
+
+* the '-o yaml' in conjuction with `--dry-run` allows you to create a manifest template from an imperative spec, combined with `--edit` it allows you to modify the object before creation
+```
+kubectl create service clusterip my-svc -o yaml --dry-run > /tmp/srv.yaml
+kubectl create --edit -f /tmp/srv.yaml
+```
+
 ## Miscellaneous (resources not allowed during exam):
 
 1. [Troubleshooting use cases by Ian/Container solutions](https://github.com/ContainerSolutions/kubernetes-examples)
