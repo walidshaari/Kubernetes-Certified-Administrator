@@ -27,6 +27,48 @@ These are the exam objectives you review and understand in order to pass the tes
 1. [Peform a version upgrade on Kubernetes cluster using kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-upgrade/)
 1. [implment etcd backup and restore](https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/#backing-up-an-etcd-cluster)
 
+[Kubecon Europe 2020: Kubeadm deep dive](https://youtu.be/DhsFfNSIrQ4)
+<details>
+<summary> sample commands used during backup/restore/update of nodes </summary>
+<p>
+
+```
+#etcd backup and restore brief
+export ETCDCTL_API=3  # needed to specify etcd api versions, not sure if it is needed anylonger with k8s 1.19+ 
+etcdctl snapshot save -h   #find save options
+etcdctl snapshot restore -h  #find restore options
+
+## possible example of save, options will change depending on cluster context, as TLS is used need to give ca,crt, and key paths
+etcdctl snapshot save /backup/snapshot.db  --cert=/etc/kubernetes/pki/etcd/server.crt  --key=/etc/kubernetes/pki/etcd/server.key --cacert=/etc/kubernetes/pki/etcd/ca.crt
+
+
+# evicting pods/nodes and bringing back node back to cluster
+kubectl drain  <node># to drain a node
+kubectl uncordon  <node> # to return a node after updates back to the cluster from unscheduled state to Ready
+kubectl cordon  <node>   # to not schedule new pods on a node
+
+#backup/restore the cluster (e.g. the state of the cluster in etcd)
+
+
+# upgrade kubernetes worker node
+kubectl drain <node>
+apt-get upgrade -y kubeadm=<k8s-version-to-upgrade>
+apt-get upgrade -y kubelet=<k8s-version-to-upgrade>
+kubeadm upgrade node config --kubelte-version <k8s-version-to-upgrade>
+systemctl restart kubelet
+kubectl uncordon <node>
+
+
+#kubeadm upgrade steps
+kubeadm upgrade plan
+kubeadm upgrade apply
+
+
+```
+
+</p>
+</details> 
+
 ### Workloads & Scheduling – 15%
 1. [Understand deployments and how to perform rolling update and rollbacks](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
 2. Use [ConfigMaps](https://kubernetes.io/docs/concepts/configuration/configmap/) and [Secrets](https://kubernetes.io/docs/concepts/configuration/secret/) to configure applications
@@ -46,7 +88,8 @@ These are the exam objectives you review and understand in order to pass the tes
     - [Kustomize Blog](https://kubernetes.io/blog/2018/05/29/introducing-kustomize-template-free-configuration-customization-for-kubernetes/)
   * [manage kubernetes objects](https://kubernetes.io/docs/tasks/manage-kubernetes-objects/)
   * [Install service catalog using helm](https://kubernetes.io/docs/tasks/service-catalog/install-service-catalog-using-helm/)
-  * Non-k8s.io resource: External resource: [templating-yaml-with-code](https://learnk8s.io/templating-yaml-with-code)
+    - Non-k8s.io resource: CNCF Kubecon video: [An introduction to Helm - Bridget Kromhout, Microsoft & Marc Khouzam, City of Montreal](https://youtu.be/x2w6T0sE50w?list=PLj6h78yzYM2O1wlsM-Ma-RYhfT5LKq0XC)
+   - Non-k8s.io resource: External resource: [templating-yaml-with-code](https://learnk8s.io/templating-yaml-with-code)
 
 ### Services & Networking – 20% 
 
@@ -82,7 +125,10 @@ These are the exam objectives you review and understand in order to pass the tes
 ## Tips:
 
 Get familiar with:
-* [kubectl explain --recurisve](https://blog.heptio.com/kubectl-explain-heptioprotip-ee883992a243)
+* familiarize yourself with the documentation, mostly https://kubernetes.io/docs/concepts/  and https://kubernetes.io/docs/tasks/ and  kubectl explain command and cheatsheet
+*  `kubectl api-versions` and `kubectl  api-resources` wih `grep` for a specific resoruce e.g. pv, pvc, deployment, storageclass, ..etc can help figure out the **apiVersion**, and **kind** combined with explain below will help in constructing the yaml manifest
+* [kubectl explain --recurisve](https://blog.heptio.com/kubectl-explain-heptioprotip-ee883992a243) to construct out any yaml manifest you need and find its specd and details
+
 * [kubectl cheatsheet](https://kubernetes.io/docs/user-guide/kubectl-cheatsheet/)
 * When using kubectl for investigations and troubleshooting utilize the wide output it gives your more details
 ```
