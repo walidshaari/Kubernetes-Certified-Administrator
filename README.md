@@ -26,14 +26,15 @@ These are the exam objectives you review and understand in order to pass the tes
 1. [Provision underlying infrastructure to deploy Kubernetes cluster](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
 1. [Peform a version upgrade on Kubernetes cluster using kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-upgrade/)
 1. [implment etcd backup and restore](https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/#backing-up-an-etcd-cluster)
+
+[Kubecon Europe 2020: Kubeadm deep dive](https://youtu.be/DhsFfNSIrQ4)
 <details>
 <summary> sample commands used during backup/restore/update of nodes </summary>
 <p>
 
-[Kubecon Europe 2020: Kubeadm deep dive](https://youtu.be/DhsFfNSIrQ4)
 ```
 #etcd backup and restore brief
-export ETCDCTL_API=3  # needed to specify etcd api version
+export ETCDCTL_API=3  # needed to specify etcd api versions, not sure if it is needed anylonger with k8s 1.19+ 
 etcdctl snapshot save -h   #find save options
 etcdctl snapshot restore -h  #find restore options
 
@@ -87,7 +88,8 @@ kubeadm upgrade apply
     - [Kustomize Blog](https://kubernetes.io/blog/2018/05/29/introducing-kustomize-template-free-configuration-customization-for-kubernetes/)
   * [manage kubernetes objects](https://kubernetes.io/docs/tasks/manage-kubernetes-objects/)
   * [Install service catalog using helm](https://kubernetes.io/docs/tasks/service-catalog/install-service-catalog-using-helm/)
-  * Non-k8s.io resource: External resource: [templating-yaml-with-code](https://learnk8s.io/templating-yaml-with-code)
+    - Non-k8s.io resource: CNCF Kubecon video: [An introduction to Helm - Bridget Kromhout, Microsoft & Marc Khouzam, City of Montreal](https://youtu.be/x2w6T0sE50w?list=PLj6h78yzYM2O1wlsM-Ma-RYhfT5LKq0XC)
+   - Non-k8s.io resource: External resource: [templating-yaml-with-code](https://learnk8s.io/templating-yaml-with-code)
 
 ### Services & Networking – 20% 
 
@@ -123,7 +125,10 @@ kubeadm upgrade apply
 ## Tips:
 
 Get familiar with:
-* [kubectl explain --recurisve](https://blog.heptio.com/kubectl-explain-heptioprotip-ee883992a243)
+* familiarize yourself with the documentation, mostly https://kubernetes.io/docs/concepts/  and https://kubernetes.io/docs/tasks/ and  kubectl explain command and cheatsheet
+*  `kubectl api-versions` and `kubectl  api-resources` wih `grep` for a specific resoruce e.g. pv, pvc, deployment, storageclass, ..etc can help figure out the **apiVersion**, and **kind** combined with explain below will help in constructing the yaml manifest
+* [kubectl explain --recurisve](https://blog.heptio.com/kubectl-explain-heptioprotip-ee883992a243) to construct out any yaml manifest you need and find its specd and details
+
 * [kubectl cheatsheet](https://kubernetes.io/docs/user-guide/kubectl-cheatsheet/)
 * When using kubectl for investigations and troubleshooting utilize the wide output it gives your more details
 ```
