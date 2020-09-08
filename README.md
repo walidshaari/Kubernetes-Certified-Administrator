@@ -110,6 +110,69 @@ kubeadm upgrade apply
 1. Understand [persistent volume claims](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims) primitive
 1. Know how to [configure applications with persistent storage](https://kubernetes.io/docs/tasks/configure-pod-container/configure-volume-storage/)
 
+<details>
+<summary> StorageClass, PersistentVolume, and PersitentVolumeClaim examples </summary>
+<p>
+
+```
+#### Storage Class example
+#
+
+#### Persistent Volume Claim example
+#
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: local-pvc
+spec:
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: local-storage-sc
+  resources:
+    requests:
+      storage: 100Mi
+
+## Persistent Volume example
+#
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: local-pv
+spec:
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 200Mi
+  local:
+    path: /data/pv/disk021
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage-sc
+  volumeMode: Filesystem
+  
+###  Pod using the pvc
+#
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    name: nginx
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    volumeMounts:
+      - name: local-persistent-storage
+        mountPath: /var/www/html
+  volumes:
+    - name: local-persistent-storage
+      persistentVolumeClaim:
+        claimName: local-pvc
+```
+
+</p>
+</details> 
+
 ### Troubleshooting – 30%
 
 1. [Evaluate cluster and node logging](https://kubernetes.io/docs/concepts/cluster-administration/logging/)
