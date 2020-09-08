@@ -12,7 +12,7 @@ Ensure you have the right version of Kubernetes documentation selected (e.g. v1.
 - [Certified Kubernetes Security Specialist CKS](https://github.com/walidshaari/Certified-Kubernetes-Secuirty-Specialist)
 - [Certified Kubernetes Application Developer CKAD](./README-ckad.md)
 
-## CKA Exam Objectives
+## CKA 2020 Exam Objectives
 
 These are the exam objectives you review and understand in order to pass the test.
 
@@ -182,7 +182,7 @@ spec:
    - [Pending or termintated pods](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#troubleshooting)
 1. [Troubleshoot cluster component failure](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-cluster/)
 1. [Troubleshoot networking](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-cluster/)
-   - [DNS troubleshooting] (https://kubernetes.io/docs/tasks/administer-cluster/dns-debugging-resolution/)
+   - [DNS troubleshooting](https://kubernetes.io/docs/tasks/administer-cluster/dns-debugging-resolution/)
 
 
 ## Tips:
