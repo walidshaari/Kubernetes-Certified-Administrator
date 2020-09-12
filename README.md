@@ -8,6 +8,8 @@ I tried to restrict the cross references of resources to [kubernetes.io](kuberne
 
 Ensure you have the right version of Kubernetes documentation selected (e.g. v1.19 as of 1st Sept 2020 exam) especially for API objects and annotations.
 
+LDR:  **practice**       **practice**      **practice**
+
 ## Other CK exams:
 - [Certified Kubernetes Security Specialist CKS](https://github.com/walidshaari/Certified-Kubernetes-Secuirty-Specialist)
 - [Certified Kubernetes Application Developer CKAD](./README-ckad.md)
@@ -103,6 +105,10 @@ kubeadm upgrade apply
 5. [Know how to configure and use CoreDNS](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/)
 6. [Choose an appropriate container network interface plugin](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network)
 
+- [Kubernetes and Networks: why is this so dang hard?](https://youtu.be/xB190-yyJnY?t=241)
+- [Kubecon Eu 2020 Tutorial: Communication Is Key - Understanding Kubernetes Networking - Jeff Poole, Vivint Smart Home](https://youtu.be/InZVNuKY5GY?list=PLj6h78yzYM2O1wlsM-Ma-RYhfT5LKq0XC)
+
+
 ### Storage – 10%
 
 1. Understand [storage classes](https://kubernetes.io/docs/concepts/storage/storage-classes/), [persistent volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
@@ -187,12 +193,17 @@ spec:
 
 ## Tips:
 
+**practice**                                           **pratice**                                         **pratice**
+
 Get familiar with:
-* familiarize yourself with the documentation, mostly https://kubernetes.io/docs/concepts/  and https://kubernetes.io/docs/tasks/ and  kubectl explain command and cheatsheet
+* Familiarize yourself with the documentation, initially [concepts](https://kubernetes.io/docs/concepts/)  and mostly [tasks](https://kubernetes.io/docs/tasks/), **kubectl explain** command, [kubectl cheatsheet](https://kubernetes.io/docs/user-guide/kubectl-cheatsheet/), and [kubectl commands reference](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands)
+  - https://kubernetes.io/docs/concepts/ 
+  - https://kubernetes.io/docs/tasks/ 
+  - https://kubernetes.io/docs/user-guide/kubectl-cheatsheet/
+  - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands
 *  `kubectl api-versions` and `kubectl  api-resources` wih `grep` for a specific resoruce e.g. pv, pvc, deployment, storageclass, ..etc can help figure out the **apiVersion**, and **kind** combined with explain below will help in constructing the yaml manifest
 * [kubectl explain --recurisve](https://blog.heptio.com/kubectl-explain-heptioprotip-ee883992a243) to construct out any yaml manifest you need and find its specd and details
 
-* [kubectl cheatsheet](https://kubernetes.io/docs/user-guide/kubectl-cheatsheet/)
 * When using kubectl for investigations and troubleshooting utilize the wide output it gives your more details
 ```
      $kubectl get pods -o wide  --show-labels  --all-namespaces
@@ -213,9 +224,43 @@ Get familiar with:
 kubectl create service clusterip my-svc -o yaml --dry-run > /tmp/srv.yaml
 kubectl create --edit -f /tmp/srv.yaml
 ```
+* use kubectl [aliases](https://github.com/ahmetb/kubectl-aliases) to speed up and reduce typo errors, practice these alaises early at your work and study for the exam. some example aliases:
+
+```
+alias k='kubectl'
+alias kg='kubectl get'
+alias kgpo='kubectl get pod'
+
+alias ksysgpo='kubectl --namespace=kube-system get pod'
+
+alias krm='kubectl delete'
+alias krmf='kubectl delete -f'
+## for quick deletes you can add --force --grace-period=0
+alias krmgf='kubectl delete --grace-period 0 --force'
+alias kgsvcoyaml='kubectl get service -o=yaml'
+alias kgsvcwn='watch kubectl get service --namespace'
+alias kgsvcslwn='watch kubectl get service --show-labels --namespace'
+
+#example usage of aliases
+krmgf nginx-8jk71    # kill pod nginx-8jk71 using grace period 0 and force
+
+```
+
 
 ## Miscellaneous (resources not allowed during exam):
 
 1. [Troubleshooting use cases by Ian/Container solutions](https://github.com/ContainerSolutions/kubernetes-examples)
-  
+
+## Popular Courses
+Most of these course as of this commit are not 100% updated with the CKA 2020.
+
+- [Mumshad CKA with practice tests and mock exams](https://www.udemy.com/course/certified-kubernetes-administrator-with-practice-tests/)  #going through 1.19 updates
+- [LinuxAcademy/ACloudGuru CKA course](https://acloud.guru/learn/7f5137aa-2d26-4b19-8d8c-025b22667e76)  # updated to 1.18 not 1.19 yet
+- [rx-m online CKA course](https://rx-m.com/cka-online-training/)
+- [Pluralsight CKA course](https://www.pluralsight.com/paths/certified-kubernetes-administrator)
+
+# What's Next:
+- Learn more about Kubernetes core components from [Duffie Cooly](https://twitter.com/mauilion)[TGIK Grokking playlist](https://www.youtube.com/playlist?list=PL7bmigfV0EqS6WxgWlH-p4dhkfuwcZ6-E)
+- [CKAD](https://www.cncf.io/certification/ckad/)
+- [CKS](https://training.linuxfoundation.org/certification/certified-kubernetes-security-specialist/)
 
