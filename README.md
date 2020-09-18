@@ -230,12 +230,12 @@ kubectl create --edit -f /tmp/srv.yaml
 alias k='kubectl'
 alias kg='kubectl get'
 alias kgpo='kubectl get pod'
-
+alias kcpyd='kubectl create pod -o yaml --dry-run=client'
 alias ksysgpo='kubectl --namespace=kube-system get pod'
 
-alias krm='kubectl delete'
-alias krmf='kubectl delete -f'
-## for quick deletes you can add --force --grace-period=0
+alias kd='kubectl delete'
+alias kdf='kubectl delete -f'
+## for quick deletes you can add --force --grace-period=0  **Not sure if it is a good idea if you are in a production cluster**
 alias krmgf='kubectl delete --grace-period 0 --force'
 alias kgsvcoyaml='kubectl get service -o=yaml'
 alias kgsvcwn='watch kubectl get service --namespace'
