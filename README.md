@@ -222,9 +222,9 @@ Get familiar with:
      
 ```
 
-* the '-o yaml' in conjuction with `--dry-run` allows you to create a manifest template from an imperative spec, combined with `--edit` it allows you to modify the object before creation
+* [fast with kubectl](https://medium.com/faun/be-fast-with-kubectl-1-18-ckad-cka-31be00acc443)  e.g. the '-o yaml' in conjuction with `--dry-run=client` allows you to create a manifest template from an imperative spec, combined with `--edit` it allows you to modify the object before creation
 ```
-kubectl create service clusterip my-svc -o yaml --dry-run > /tmp/srv.yaml
+kubectl create service clusterip my-svc -o yaml --dry-run=client > /tmp/srv.yaml
 kubectl create --edit -f /tmp/srv.yaml
 ```
 * use kubectl [aliases](https://github.com/ahmetb/kubectl-aliases) to speed up and reduce typo errors, practice these alaises early at your work and study for the exam. some example aliases:
