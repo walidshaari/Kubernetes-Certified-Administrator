@@ -1,3 +1,6 @@
+[![License: CC BY-SA 4.0](https://licensebuttons.net/l/by-sa/4.0/80x15.png)](https://creativecommons.org/licenses/by-sa/4.0/)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+
 # Kubernetes Certified Administration
 
 Online resources that will help you prepare for taking the Kubernetes Certified Administrator Certification exam.
@@ -219,9 +222,9 @@ Get familiar with:
      
 ```
 
-* the '-o yaml' in conjuction with `--dry-run` allows you to create a manifest template from an imperative spec, combined with `--edit` it allows you to modify the object before creation
+* [fast with kubectl](https://medium.com/faun/be-fast-with-kubectl-1-18-ckad-cka-31be00acc443)  e.g. the '-o yaml' in conjuction with `--dry-run=client` allows you to create a manifest template from an imperative spec, combined with `--edit` it allows you to modify the object before creation
 ```
-kubectl create service clusterip my-svc -o yaml --dry-run > /tmp/srv.yaml
+kubectl create service clusterip my-svc -o yaml --dry-run=client > /tmp/srv.yaml
 kubectl create --edit -f /tmp/srv.yaml
 ```
 * use kubectl [aliases](https://github.com/ahmetb/kubectl-aliases) to speed up and reduce typo errors, practice these alaises early at your work and study for the exam. some example aliases:
@@ -230,12 +233,12 @@ kubectl create --edit -f /tmp/srv.yaml
 alias k='kubectl'
 alias kg='kubectl get'
 alias kgpo='kubectl get pod'
-
+alias kcpyd='kubectl create pod -o yaml --dry-run=client'
 alias ksysgpo='kubectl --namespace=kube-system get pod'
 
-alias krm='kubectl delete'
-alias krmf='kubectl delete -f'
-## for quick deletes you can add --force --grace-period=0
+alias kd='kubectl delete'
+alias kdf='kubectl delete -f'
+## for quick deletes you can add --force --grace-period=0  **Not sure if it is a good idea if you are in a production cluster**
 alias krmgf='kubectl delete --grace-period 0 --force'
 alias kgsvcoyaml='kubectl get service -o=yaml'
 alias kgsvcwn='watch kubectl get service --namespace'
