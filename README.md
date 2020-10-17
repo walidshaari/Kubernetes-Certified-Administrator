@@ -255,13 +255,14 @@ krmgf nginx-8jk71    # kill pod nginx-8jk71 using grace period 0 and force
 
 1. [Troubleshooting use cases by Ian/Container solutions](https://github.com/ContainerSolutions/kubernetes-examples)
 
-## Popular Courses
+## Popular training and practice sites:
 Most of these course as of this commit are not 100% updated with the CKA 2020.
 
 - [Mumshad CKA with practice tests and mock exams](https://www.udemy.com/course/certified-kubernetes-administrator-with-practice-tests/)  #going through 1.19 updates
 - [LinuxAcademy/ACloudGuru CKA course](https://acloud.guru/learn/7f5137aa-2d26-4b19-8d8c-025b22667e76)  # updated to 1.18 not 1.19 yet
 - [rx-m online CKA course](https://rx-m.com/cka-online-training/)
 - [Pluralsight CKA course](https://www.pluralsight.com/paths/certified-kubernetes-administrator)
+- [Killer.sh CKA simulator](https://killer.sh/cka)
 
 # What's Next:
 - Learn more about Kubernetes core components from [Duffie Cooly](https://twitter.com/mauilion) [TGIK Grokking playlist](https://www.youtube.com/playlist?list=PL7bmigfV0EqS6WxgWlH-p4dhkfuwcZ6-E)
