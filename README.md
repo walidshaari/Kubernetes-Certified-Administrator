@@ -262,7 +262,7 @@ Most of these course as of this commit are not 100% updated with the CKA 2020.
 - [LinuxAcademy/ACloudGuru CKA course](https://acloud.guru/learn/7f5137aa-2d26-4b19-8d8c-025b22667e76)  # updated to 1.18 not 1.19 yet
 - [rx-m online CKA course](https://rx-m.com/cka-online-training/)
 - [Pluralsight CKA course](https://www.pluralsight.com/paths/certified-kubernetes-administrator)
-- [Killer.sh CKA simulator](https://killer.sh/cka)
+- [Killer.sh CKA simulator](https://killer.sh/cka)         &#x27F9; use code **walidshaari** for **20%** discount
 
 # What's Next:
 - Learn more about Kubernetes core components from [Duffie Cooly](https://twitter.com/mauilion) [TGIK Grokking playlist](https://www.youtube.com/playlist?list=PL7bmigfV0EqS6WxgWlH-p4dhkfuwcZ6-E)
