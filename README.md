@@ -84,9 +84,9 @@ kubeadm upgrade apply
   - [scaling a replicaset](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/#scaling-a-replicaset)
 4. Understand the primitives used to create robust, self-healing, application deployments
  - [Replicaset](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/)
- - [Deployments](https://v1-16.docs.kubernetes.io/docs/concepts/workloads/controllers/deployment/)
+ - [Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
  - [Statefulsets](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/)
- - [Daemonset](https://v1-16.docs.kubernetes.io/docs/concepts/workloads/controllers/daemonset/)
+ - [Daemonset](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/)
 5. Understand [how resource limits can affect Pod scheduling](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#how-pods-with-resource-requests-are-scheduled)
 6. Awareness of manifest management and common templating tools
   * [Kustomize](https://kubernetes.io/docs/tasks/manage-kubernetes-objects/kustomization/)
