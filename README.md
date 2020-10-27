@@ -267,6 +267,10 @@ Most of these course as of this commit are not 100% updated with the CKA 2020.
 
 # What's Next:
 - Learn more about Kubernetes core components from [Duffie Cooly](https://twitter.com/mauilion) [TGIK Grokking playlist](https://www.youtube.com/playlist?list=PL7bmigfV0EqS6WxgWlH-p4dhkfuwcZ6-E)
-- [CKAD](https://www.cncf.io/certification/ckad/)
-- [CKS](https://training.linuxfoundation.org/certification/certified-kubernetes-security-specialist/)
+- [CKAD Certified Kubernetes Application Developer](https://www.cncf.io/certification/ckad/)
+- [CKS Certified Kubernetes Security Specialist](https://github.com/walidshaari/Certified-Kubernetes-Secuirty-Specialist)
+
+## Stargazers over time
+
+[![Stargazers over time](https://starchart.cc/walidshaari/Kubernetes-Certified-Administrator.svg)](https://starchart.cc/walidshaari/Kubernetes-Certified-Administrator/)
 
