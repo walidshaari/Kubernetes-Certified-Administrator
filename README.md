@@ -15,7 +15,7 @@ LDR:  **practice**       **practice**      **practice**
 
 ## Other CK exams:
 - [Certified Kubernetes Security Specialist CKS](https://github.com/walidshaari/Certified-Kubernetes-Secuirty-Specialist)
-- [Certified Kubernetes Application Developer CKAD](./README-ckad.md)
+- [Certified Kubernetes Application Developer CKAD](https://github.com/dgkanatsios/CKAD-exercises)
 
 ## CKA 2020 Exam Objectives
 
@@ -256,13 +256,13 @@ krmgf nginx-8jk71    # kill pod nginx-8jk71 using grace period 0 and force
 1. [Troubleshooting use cases by Ian/Container solutions](https://github.com/ContainerSolutions/kubernetes-examples)
 
 ## Popular training and practice sites:
-Most of these course as of this commit are not 100% updated with the CKA 2020.
+*Double check if the course is uptodate with the latest exam information (e.g. api, or curicuilim)*
 
-- [Mumshad CKA with practice tests and mock exams](https://www.udemy.com/course/certified-kubernetes-administrator-with-practice-tests/)  #going through 1.19 updates
-- [LinuxAcademy/ACloudGuru CKA course](https://acloud.guru/learn/7f5137aa-2d26-4b19-8d8c-025b22667e76)  # updated to 1.18 not 1.19 yet
+- [Mumshad CKA with practice tests and mock exams](https://www.udemy.com/course/certified-kubernetes-administrator-with-practice-tests/) - Highly recommended
+- [Killer.sh CKA simulator](https://killer.sh/cka)         &#x27F9; use code **walidshaari** for **20%** discount  - they update frequently
+- [LinuxAcademy/ACloudGuru CKA course](https://acloud.guru/learn/7f5137aa-2d26-4b19-8d8c-025b22667e76)  # labs last checked were updated to 1.18
 - [rx-m online CKA course](https://rx-m.com/cka-online-training/)
 - [Pluralsight CKA course](https://www.pluralsight.com/paths/certified-kubernetes-administrator)
-- [Killer.sh CKA simulator](https://killer.sh/cka)         &#x27F9; use code **walidshaari** for **20%** discount
 - Duffie Cooly [hands-on CKA video](https://k8s.work/cka-lab.mp4) using KinD and accompanying [notes](https://hackmd.io/@mauilion/cka-lab)  
 
 # What's Next:
