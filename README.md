@@ -249,7 +249,14 @@ alias kgsvcslwn='watch kubectl get service --show-labels --namespace'
 krmgf nginx-8jk71    # kill pod nginx-8jk71 using grace period 0 and force
 
 ```
+* Enable [kubectl autocomplete](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#bash). Autocomplete is the life saviour in any timebound exam as well as our day to day work (e.g. If autocomplete enabled `k -n [Press Tab]` will suggest available namespaces). Example command to enable autocomplete is available at official [kubectl Cheat Sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#bash) page, you don't have to remember anything. 
+```
+source <(kubectl completion bash) # setup autocomplete in bash into the current shell, bash-completion package should be installed first.
+echo "source <(kubectl completion bash)" >> ~/.bashrc # add autocomplete permanently to your bash shell.
 
+alias k=kubectl
+complete -F __start_kubectl k
+```
 
 ## Miscellaneous (resources not allowed during exam):
 
@@ -260,6 +267,7 @@ krmgf nginx-8jk71    # kill pod nginx-8jk71 using grace period 0 and force
 
 - [Mumshad CKA with practice tests and mock exams](https://www.udemy.com/course/certified-kubernetes-administrator-with-practice-tests/) - Highly recommended
 - [Killer.sh CKA simulator](https://killer.sh/cka)         &#x27F9; use code **walidshaari** for **20%** discount  - they update frequently
+- [A Cloud Guru - Certified Kubernetes Administrator (CKA)](https://acloud.guru/overview/certified-kubernetes-administrator)  # k8s version 1.19 - last checked January 2021
 - [LinuxAcademy/ACloudGuru CKA course](https://acloud.guru/learn/7f5137aa-2d26-4b19-8d8c-025b22667e76)  # labs last checked were updated to 1.18
 - [rx-m online CKA course](https://rx-m.com/cka-online-training/)
 - [Pluralsight CKA course](https://www.pluralsight.com/paths/certified-kubernetes-administrator)
