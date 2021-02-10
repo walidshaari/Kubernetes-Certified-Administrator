@@ -59,7 +59,7 @@ kubectl cordon  <node>   # to not schedule new pods on a node
 kubectl drain <node>
 apt-get upgrade -y kubeadm=<k8s-version-to-upgrade>
 apt-get upgrade -y kubelet=<k8s-version-to-upgrade>
-kubeadm upgrade node config --kubelte-version <k8s-version-to-upgrade>
+kubeadm upgrade node config --kubelet-version <k8s-version-to-upgrade>
 systemctl restart kubelet
 kubectl uncordon <node>
 
