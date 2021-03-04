@@ -281,5 +281,5 @@ complete -F __start_kubectl k
 
 ## Stargazers over time
 
-[![Stargazers over time](https://starchart.cc/walidshaari/Kubernetes-Certified-Administrator.svg)](https://starchart.cc/walidshaari/Kubernetes-Certified-Administrator/)
+[![Stargazers over time](https://starchart.cc/walidshaari/Kubernetes-Certified-Administrator.svg)](https://starchart.cc/walidshaari/Kubernetes-Certified-Administrator)
 
