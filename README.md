@@ -27,6 +27,8 @@ These are the exam objectives you review and understand in order to pass the tes
 1. [Manage role based access control](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)
     - [Practice: RBAC with Kubernetes in Minikube](https://medium.com/@HoussemDellai/rbac-with-kubernetes-in-minikube-4deed658ea7b)
 1. [Use kubeadm to install a basic cluster](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/)
+    - [Practice: Install Kubernetes On Ubuntu](https://phoenixnap.com/kb/install-kubernetes-on-ubuntu)
+      (It works by creating vm nodes in mac/vmware fusion) 
 1. [Manage a highly available Kubernetes cluster](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/high-availability/)
     - [Options for Highly Available topology](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/ha-topology/)
     - [Weaveworks Kubeadm HA cluster](https://www.weave.works/blog/running-highly-available-clusters-with-kubeadm)
