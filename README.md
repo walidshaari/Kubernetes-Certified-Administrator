@@ -17,7 +17,7 @@ LDR:  **practice**       **practice**      **practice**
 - [Certified Kubernetes Security Specialist CKS](https://github.com/walidshaari/Certified-Kubernetes-Secuirty-Specialist)
 - [Certified Kubernetes Application Developer CKAD](https://github.com/dgkanatsios/CKAD-exercises)
 
-## CKA 2020 Exam Objectives
+## CKA 2021 Exam Objectives
 
 These are the exam objectives you review and understand in order to pass the test.
 
