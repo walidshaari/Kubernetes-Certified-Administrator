@@ -1,0 +1,6 @@
+# General
+.vagrant/
+configs/
+*.log
+*.swp
+
