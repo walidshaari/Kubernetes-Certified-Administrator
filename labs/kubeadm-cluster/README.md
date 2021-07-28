@@ -15,16 +15,16 @@
 
 To provision a cluster, execute the following commands.
 
-```shell
+```bash
 git clone https://github.com/walidshaari/Kubernetes-Certified-Administrator
-cd  cd Kubernetes-Certified-Administrator/labs/kubeadm-cluster
+cd Kubernetes-Certified-Administrator/labs/kubeadm-cluster
 vagrant global-status    # Check if any vagrant machines are up and where
 vagrant up
 ```
 
 ## Set Kubeconfig file varaible.
 
-```shell
+```bash
 cd vagrant-cka
 cd configs
 export KUBECONFIG=$(PWD)/config
@@ -32,13 +32,13 @@ export KUBECONFIG=$(PWD)/config
 
 or you can copy the config file to .kube directory.
 
-```shell
+```bash
 cp config ~/.kube/
 ```
 
 ## Kubernetes Dashboard URL
 
-```shell
+```bash
 http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/overview?namespace=kubernetes-dashboard
 ```
 
