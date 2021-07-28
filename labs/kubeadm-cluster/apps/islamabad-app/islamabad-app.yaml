@@ -1,0 +1,71 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  creationTimestamp: null
+  name: cka
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: islamabad-app
+  namespace: cka
+  labels:
+    app: islamabad-app
+spec:
+  selector:
+    matchLabels:
+      app: islamabad-app
+  template:
+    metadata:
+      labels:
+        app: islamabad-app
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+data:
+  POSTGRES_HOST_AUTH_METHOD: trust
+  POSTGRES_PASSWORD: islamabad
+kind: ConfigMap
+metadata:
+  name: islamabad-db-configmap
+  namespace: cka
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-db
+  namespace: cka
+  labels:
+    app: postgres
+spec:
+  selector:
+    matchLabels:
+      app: postgres-db
+  template:
+    metadata:
+      labels:
+        app: postgres-db
+    spec:
+      containers:
+      - image: postgres
+        name: postgres
+        ports:
+        - containerPort: 5432
+        env:
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              name: islamabad-db-configmap
+              key: POSTGRES_PASSWORD
+        - name: POSTGRES_HOST_AUTH_METHOD
+          valueFrom:
+            configMapKeyRef:
+              name: islamabad-db-configmap
+              key: POSTGRES_HOST_AUTH_METHOD
+

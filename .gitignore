@@ -1,0 +1,6 @@
+.vagrant/
+configs/
+*.log
+*.swp
+labs/kubeadm-cluster/snapshots/*
+
