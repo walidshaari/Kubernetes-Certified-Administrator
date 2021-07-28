@@ -6,17 +6,17 @@ Social networks:
   - https://www.linkedin.com/in/walidshaari/
   - https://twitter.com/walidshaari
 
-<img src="./images/CNJ.png" width="450"/>
+<img src="../../images/CNJ.png" width="450"/>
 
 ## News
 
 - video of the [Exam environment preview](https://www.youtube.com/watch?v=9UqkWcdy140)
 
-   ![exam environment](images/ExamEnvPreview.png)
+   ![exam environment](../../images/ExamEnvPreview.png)
 
 - practice on killer.sh when you are ready before the exam at least a week
 
-   ![killer.sh](images/killer.shell-include.png)
+   ![killer.sh](../../images/killer.shell-include.png)
    
    
    https://link.medium.com/LrdvRBadbib
@@ -29,7 +29,7 @@ Social networks:
 ## Quick tips
 
 * Ensure you are practcing using the right exam kubernetes version. as of  today it is 1.21 and using the right 
-![k8s docs](images/k8s-docs.png)
+![k8s docs](../../images/k8s-docs.png)
  
 * Ensure you address the right namespace and cluster always
 * KISS:  Do not overthink it,start with the basics, do your backups, and remmber what you practiced.
