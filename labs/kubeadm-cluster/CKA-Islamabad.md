@@ -54,6 +54,11 @@ complete -F __start_kubectl k
 *  `kubectl api-versions` and `kubectl  api-resources` with `grep` for a specific resource, e.g., pv, pvc, deployment, storageclass, ..etc can help figure out the **apiVersion**, and **kind** combined with **explain** below will help in constructing the YAML manifest
 * [kubectl explain --recurisve](https://blog.heptio.com/kubectl-explain-heptioprotip-ee883992a243) to construct out any yaml manifest you need and find its specs and details 
 * https://medium.com/nerd-for-tech/one-cka-ckad-cks-requirement-mastering-kubectl-85486bc0a3aa
+* VIM skills
+  - ~/.vimrc to help with avoiding YAML mistakes 
+    ```vim
+    autocmd FileType yaml setlocal ts=2 sts=2 sw=2 ai et cuc
+    ```
 
 ## The mindset: What to expect in CKA
 
