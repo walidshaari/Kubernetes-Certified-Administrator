@@ -53,10 +53,12 @@ complete -F __start_kubectl k
   - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands
 *  `kubectl api-versions` and `kubectl  api-resources` with `grep` for a specific resource, e.g., pv, pvc, deployment, storageclass, ..etc can help figure out the **apiVersion**, and **kind** combined with **explain** below will help in constructing the YAML manifest
 * [kubectl explain --recurisve](https://blog.heptio.com/kubectl-explain-heptioprotip-ee883992a243) to construct out any yaml manifest you need and find its specs and details 
+* https://medium.com/nerd-for-tech/one-cka-ckad-cks-requirement-mastering-kubectl-85486bc0a3aa
 
 ## The mindset: What to expect in CKA
 
  -  The course [curiculim](https://github.com/cncf/curriculum), [FAQ](https://docs.linuxfoundation.org/tc-docs/certification/faq-cka-ckad-cks)
+ -  [What Clusters we will have?](https://docs.linuxfoundation.org/tc-docs/certification/tips-cka-and-ckad#cka-and-ckad-environment)
  -  Other webinars to watch [Preparing for Kubernetes Certification Exams - Tim Serewicz, The Linux Foundation
 ](https://youtu.be/3CmIwjGZVJ0)
  -  Courses: see main repo [README.md Training section](../../README.md#popular-training-and-practice-sites)
@@ -104,7 +106,7 @@ vagrant ssh    # will take you the control plane as it is the vagrant default no
      - --trusted-ca-file
      - --data-dir
      - 
-- :triangular_flag_on_post: etcdctl --help    # get to know your tools `kubectl` `etcdctl` `vim` `tmux`,...etc
+- :triangular_flag_on_post: etcdctl --help    # get to know your tools [kubectl](https://medium.com/nerd-for-tech/one-cka-ckad-cks-requirement-mastering-kubectl-85486bc0a3aa) `etcdctl` `vim` `tmux`,...etc
   ```bash
   root@control-plane:~# kubectl exec -n kube-system -it etcd-control-plane -- etcdctl --help|grep snapshot
 	snapshot restore	Restores an etcd member snapshot to an etcd directory
@@ -353,11 +355,60 @@ etcdctl snapshot save /home/cloud_user/etcd_backup.db  --endpoints=https://10.0.
 sudo etcdctl snapshot restore  /home/cloud_user/etcd_backup.db  --initial-cluster etcd-restore=https://10.0.1.101:2380 --initial-advertise-peer-urls https://10.0.1.101:2380 --name etcd-restore --data-dir /var/lib/etcd
 sudo chown etcd:etcd  /var/lib/etcd/
 
-
-
 ```
+## 2- Networking
+
+### Network policy tutorial
+-  https://github.com/networkpolicy/tutorial
+
+#### Concepts
+- By default all pods can communicate to all pods in all namespaces unless there are controls put in by the kubernetes distribution.
+- first you isolate by selection, then you start allowing by 
+
+
+#### Network Flow:
+
+Ingress: 	incoming traffic to select pod in question
+
+Egress		outgoing traffic from selected pod in question 
+
+
+#### Network policy editor
+
+- https://networkpolicy.io/
+
+
+## 3- Troubleshooting
+
+- https://kubernetes.io/docs/tasks/debug-application-cluster/debug-cluster/
+- learn crictl and ctr 
+   - https://portal2portal.blogspot.com/2021/06/tinkering-with-containerd-and-ctr-tool.html
+   - https://kubernetes.io/docs/tasks/debug-application-cluster/crictl/
+   
+- lets try to break things and see what happens?
+
+- OS related issues:
+    - systemctl
+    - swap memory
+    - disk space
+    - node conditions:
+      - memory
+      - disk space  
+
+- Nodes issues
+  - CNI network plugin 
+  - Certficates
+  - firewall rules
+ 
+- Control-plane issues
+  - kubelet
+  - static manifests
+ 
+
+
 ## Todo:
 - test vagrant in different Oss and after a destroy
 - backup etcd CronJob
 - secure your backups (encrypt them and store them in a secure location), for DR ensure you have a copy offsite
+- Spice it up with Ansible/GOSS/INSPEC
 
