@@ -14,34 +14,34 @@ Social networks:
 
    ![exam environment](../../images/ExamEnvPreview.png)
 
-- practice on killer.sh when you are ready before the exam at least a week
+- practice on the killer.sh when you are ready before the exam at least a week
 
    ![killer.sh](../../images/killer.shell-include.png)
    
    
    https://link.medium.com/LrdvRBadbib
    Certification Magic 
-   Pluralsight acquring Acloud guru 
+   Pluralsight acquiring Acloud guru 
    
    Kubernetes 1.22 documentation
    
 
 ## Quick tips
 
-* Ensure you are practcing using the right exam kubernetes version. as of  today it is 1.21 and using the right 
+* Ensure you are practicing using the right exam kubernetes version. as of  today, it is 1.21 and using the right 
 ![k8s docs](../../images/k8s-docs.png)
  
 * Ensure you address the right namespace and cluster always
-* KISS:  Do not overthink it,start with the basics, do your backups, and remmber what you practiced.
+* KISS:  Do not overthink it; start with the basics, do your backups, and remember what you practiced.
 * Get familiar with the options you need and files
 * avoid spelling mistakes
 * Focused troubleshooting for control-plan static manifests and kubelet: `journalctl -u kubelet`
   -  Check logs in `/var/log/pods`  or `/var/log/containers` or `crictl ps -a`, `crictl pods` or `crictl logs`
 * Make sure you backup manifests/configuration files before working on them
-  - While practcing try to break working configs and check for errors, investigate them. [Klustered youtube series](https://www.youtube.com/playlist?list=PLz0t90fOInA5IyhoT96WhycPV8Km-WICj) might help you understand more the Kubernetes internals
-* The exam environments should come ready with auto-completion and all command line tools you need, try to capatilize that, if you can do it from the command line, no need to visit that web page, if you need that webpage, make sure you already know where in the web page its is what you need, you can bookmark if you wish.
+  - While practicing, try to break working configs and check for errors, investigate them. [Klustered youtube series](https://www.youtube.com/playlist?list=PLz0t90fOInA5IyhoT96WhycPV8Km-WICj) might help you understand more the Kubernetes internals
+* The exam environments should come ready with auto-completion and all command-line tools needed. Try to capitalize on that; if you can do it from the command line, no need to visit that web page; if you need that webpage, make sure you already know where in the web page is what you need, you can bookmark it if you wish.
 
-* Enable [kubectl autocomplete](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#bash). Autocomplete is the life saviour in any timebound exam as well as our day to day work (e.g. If autocomplete enabled `k -n [Press Tab]` will suggest available namespaces). Example command to enable autocomplete is available at official [kubectl Cheat Sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#bash) page, you don't have to remember anything. 
+* Enable [kubectl autocomplete](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#bash). Autocomplete is the life savior in any time-bound exam and our day-to-day work (e.g., If the autocomplete enabled `k -n [Press Tab]` will suggest available namespaces). Example command to enable autocomplete is available at the official [kubectl Cheat Sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#bash) page; you don't have to remember anything. 
 ```
 source <(kubectl completion bash) # setup autocomplete in bash into the current shell, bash-completion package should be installed first.
 echo "source <(kubectl completion bash)" >> ~/.bashrc # add autocomplete permanently to your bash shell.
@@ -55,8 +55,8 @@ complete -F __start_kubectl k
   - https://kubernetes.io/docs/tasks/ 
   - https://kubernetes.io/docs/user-guide/kubectl-cheatsheet/
   - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands
-*  `kubectl api-versions` and `kubectl  api-resources` wih `grep` for a specific resoruce e.g. pv, pvc, deployment, storageclass, ..etc can help figure out the **apiVersion**, and **kind** combined with explain below will help in constructing the yaml manifest
-* [kubectl explain --recurisve](https://blog.heptio.com/kubectl-explain-heptioprotip-ee883992a243) to construct out any yaml manifest you need and find its specd and details 
+*  `kubectl api-versions` and `kubectl  api-resources` with `grep` for a specific resource, e.g., pv, pvc, deployment, storageclass, ..etc can help figure out the **apiVersion**, and **kind** combined with **explain** below will help in constructing the YAML manifest
+* [kubectl explain --recurisve](https://blog.heptio.com/kubectl-explain-heptioprotip-ee883992a243) to construct out any yaml manifest you need and find its specs and details 
 
 ## The mindset: What to expect in CKA
 
@@ -70,21 +70,18 @@ complete -F __start_kubectl k
 - [Learn Vagrant](https://learn.hashicorp.com/vagrant)
 - [vagrant cheet sheet](https://gist.github.com/wpscholar/a49594e2e2b918f4d0c4)
 
+## workshop start 
+
+```bash
+git clone https://github.com/walidshaari/Kubernetes-Certified-Administrator
+cd Kubernetes-Certified-Administrator/labs/kubeadm-cluster
+vagrant global-status    # Check if any vagrant machines are up and where
+vagrant up
+vagrant ssh    # will take you the control plane as it is the vagrant default node
+```
+
 ## 1- etcd
-Possible question
-- backup cluster etcd data and save it in the base/jump host at specific directory. in our case  /vagrant/snapshots/etcd-snapshot.db
-- restore cluster etcd data from /vagrant/backup/islamabad-restore.db and verify you have the namespace CKA and deployment islamabad-nginx and its associated services
-  - first check if you have any of the two namespaces cka, or dammam-cnj, if you do delete the objects
-    ```bash
-    # delete cka and dammam-cnj namespaces if they exist
-    
-    ```
-  - examine what API resources and objects are available in the cluster?
-  - restore from /vagrant/backup/islamabad-restore.db 
-  - check the control-plane pods
-  - check the API objects in CKA namespace
-
-
+  
 - Documentation:  
    - https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/#backing-up-an-etcd-cluster
    - https://etcd.io/docs/v3.5/op-guide/recovery/#restoring-a-cluster
@@ -95,8 +92,8 @@ Possible question
 - is it enough?
 
 -  Day 2 operations, required for resiliency, done periodically and before upgrades or maintenance updates
- ### Componenets
-   - command line tool: etcdctl
+ ### Components
+   - command-line tool: etcdctl
      
      `kubectl exec -n kube-system -it etcd-control-plane -- etcdctl version`
    - etcd manifest and the special `--data-dir` 
@@ -135,6 +132,56 @@ Possible question
 ###  https://stackoverflow.com/questions/63433622/is-the-following-output-of-etcdctl-member-list-correct-and-etcd-cluster-is-in
 3b17aaa147134dd, started, control-plane, https://10.0.0.10:2380, https://10.0.0.10:2379, false
 
+```
+
+### Possible task
+  
+  - backup cluster, etcd data and save it in the base/jump host at specific directory. in our case  /vagrant/snapshots/etcd-snapshot.db
+  - restore cluster etcd data from /vagrant/backup/islamabad-restore.db and verify you have the namespace CKA and deployment islamabad-nginx and its associated services
+  
+    - first check if you have any of the two namespaces cka, or dammam-cnj, if you do delete the objects
+      ```bash
+      
+      # delete cka and dammam-cnj namespaces if they exist
+      # as user vagrant in the vagrant home directory
+      
+      vagrant@control-plane:~$ cd
+            
+      vagrant@control-plane:~$ pwd
+      /home/vagrant
+      
+      vagrant@control-plane:~$ kubectl delete  -f /vagrant/apps/dammam-cnj/
+      vagrant@control-plane:~$ kubectl delete  -f /vagrant/apps/islamabad-app/
+            
+    ```
+  - if you have a clean setup/environment start the etcd exercise
+    
+    ```
+    vagrant@control-plane:~$ /vagrant/scripts/etcd-prep.sh 
+    namespace/cka created
+    deployment.apps/islamabad-app created
+    configmap/islamabad-db-configmap created
+    deployment.apps/postgres-db created
+    
+    ```
+    
+  - examine what API resources and objects are available in the cluster?
+    ```
+    vagrant@control-plane:~$ kubectl get all -n cka
+    NAME                            READY   UP-TO-DATE   AVAILABLE   AGE
+    deployment.apps/islamabad-app   0/0     0            0           2m5s
+    deployment.apps/postgres-db     0/0     0            0           2m5s
+
+    NAME                                       DESIRED   CURRENT   READY   AGE
+    replicaset.apps/islamabad-app-55f4844967   0         0         0       2m5s
+    replicaset.apps/postgres-db-6cb54bbb96     0         0         0       2m5s
+    
+    ```
+    
+  - When you are done exploring, **restore** from /vagrant/backup/islamabad-restore.db 
+  - check the control-plane pods
+  - check the API objects in CKA namespace
+
 ##### Save ETCD data snapshot
 
 ```
@@ -171,7 +218,7 @@ $ sudo etcdctl --cacert=/etc/kubernetes/pki/etcd/ca.crt \
 ```
 
 - Restore a snapshot of etcd: 
-  - restore backup to another location   
+  - restore the backup to another location   
     - you can use the new location if you modify the etcd datadirectory configuration in the etcd pod manifest 
   - move the original etcd cluster data out of the way
   - stop etcd
@@ -292,7 +339,7 @@ root      2047  1.8  3.5 10612728 72536 ?      Ssl  12:17   4:55 etcd --advertis
 ##################################
 
 
-# No need to set the API env varaible ETCDCTL_API to 3, it defaults to 3 now  
+# No need to set the API env variable ETCDCTL_API to 3, it defaults to 3 now  
 etcdctl version: 3.4.10
 API version: 3.4
 
@@ -312,10 +359,7 @@ sudo chown etcd:etcd  /var/lib/etcd/
 
 ```
 ## Todo:
-- test vagrant in different Oss and after a destory
+- test vagrant in different Oss and after a destroy
 - backup etcd CronJob
-- secure your backups (encyrpt them and store in a secure location), for DR ensure you have a copy offsite
-
- 
-  
+- secure your backups (encrypt them and store them in a secure location), for DR ensure you have a copy offsite
 
