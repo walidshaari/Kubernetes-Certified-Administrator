@@ -1,29 +1,25 @@
 ## How to connect with Walid?
 
-Social networks:
+  - Issues/pull requests here GitHub
+  - Social networks:
+    - https://www.linkedin.com/in/walidshaari/
+    - https://twitter.com/walidshaari
 
-  - issues/pull requests here GitHub
-  - https://www.linkedin.com/in/walidshaari/
-  - https://twitter.com/walidshaari
-
-<img src="../../images/CNJ.png" width="450"/>
+  <img src="../../images/CNJ.png" width="450"/>
 
 ## News
 
-- video of the [Exam environment preview](https://www.youtube.com/watch?v=9UqkWcdy140)
+- Video f the [Exam environment preview](https://www.youtube.com/watch?v=9UqkWcdy140)
 
    ![exam environment](../../images/ExamEnvPreview.png)
 
-- practice on the killer.sh when you are ready before the exam at least a week
+- Practice on the killer.sh when you are ready before the exam at least a week and before the exam a couple of days
 
    ![killer.sh](../../images/killer.shell-include.png)
    
-   
-   https://link.medium.com/LrdvRBadbib
-   Certification Magic 
-   Pluralsight acquiring Acloud guru 
-   
-   Kubernetes 1.22 documentation
+ - [Top free kubernetes Certifications](https://link.medium.com/LrdvRBadbib)
+ - [CNCF Certs Magic with Saiyam](https://www.youtube.com/playlist?list=PLj6h78yzYM2MOZst3T8t2qpsdwBpyxWwy)
+ - [Pluralsight acquiring Acloud Guru](https://www.startupdaily.net/2021/07/us-tech-giant-pluralsight-completes-2-billion-acquisition-of-a-cloud-guru/) 
    
 
 ## Quick tips
@@ -34,7 +30,7 @@ Social networks:
 * Ensure you address the right namespace and cluster always
 * KISS:  Do not overthink it; start with the basics, do your backups, and remember what you practiced.
 * Get familiar with the options you need and files
-* avoid spelling mistakes
+* Avoid spelling mistakes
 * Focused troubleshooting for control-plan static manifests and kubelet: `journalctl -u kubelet`
   -  Check logs in `/var/log/pods`  or `/var/log/containers` or `crictl ps -a`, `crictl pods` or `crictl logs`
 * Make sure you backup manifests/configuration files before working on them
@@ -60,10 +56,11 @@ complete -F __start_kubectl k
 
 ## The mindset: What to expect in CKA
 
- -  the course curiculim, FAQ
- -  other webinars to watch
- -  Courses
- - Tips and tricks
+ -  The course [curiculim](https://github.com/cncf/curriculum), [FAQ](https://docs.linuxfoundation.org/tc-docs/certification/faq-cka-ckad-cks)
+ -  Other webinars to watch [Preparing for Kubernetes Certification Exams - Tim Serewicz, The Linux Foundation
+](https://youtu.be/3CmIwjGZVJ0)
+ -  Courses: see main repo [README.md Training section](../../README.md#popular-training-and-practice-sites)
+ - More tips and tricks: see main repo [README.md Tips section](../../README.md#tips)
 
 ## Learn Vagrant
 
@@ -108,7 +105,7 @@ vagrant ssh    # will take you the control plane as it is the vagrant default no
      - --data-dir
      - 
 - :triangular_flag_on_post: etcdctl --help    # get to know your tools `kubectl` `etcdctl` `vim` `tmux`,...etc
-```
+  ```bash
   root@control-plane:~# kubectl exec -n kube-system -it etcd-control-plane -- etcdctl --help|grep snapshot
 	snapshot restore	Restores an etcd member snapshot to an etcd directory
 	snapshot save		Stores an etcd node backend snapshot to a given file
@@ -128,11 +125,11 @@ vagrant ssh    # will take you the control plane as it is the vagrant default no
   | 3b17aaa147134dd | started | control-plane | https://10.0.0.10:2380 | https://10.0.0.10:2379 |      false |
   +-----------------+---------+---------------+------------------------+------------------------+------------+
   
-## if default --write-out it would be simple like below
-###  https://stackoverflow.com/questions/63433622/is-the-following-output-of-etcdctl-member-list-correct-and-etcd-cluster-is-in
-3b17aaa147134dd, started, control-plane, https://10.0.0.10:2380, https://10.0.0.10:2379, false
+  ## if default --write-out it would be simple like below
+  ###  https://stackoverflow.com/questions/63433622/is-the-following-output-of-etcdctl-member-list-correct-and-etcd-cluster-is-in
+  3b17aaa147134dd, started, control-plane, https://10.0.0.10:2380, https://10.0.0.10:2379, false
 
-```
+  ```
 
 ### Possible task
   
@@ -156,7 +153,7 @@ vagrant ssh    # will take you the control plane as it is the vagrant default no
     ```
   - if you have a clean setup/environment start the etcd exercise
     
-    ```
+    ```bash
     vagrant@control-plane:~$ /vagrant/scripts/etcd-prep.sh 
     namespace/cka created
     deployment.apps/islamabad-app created
@@ -166,7 +163,7 @@ vagrant ssh    # will take you the control plane as it is the vagrant default no
     ```
     
   - examine what API resources and objects are available in the cluster?
-    ```
+    ```bash
     vagrant@control-plane:~$ kubectl get all -n cka
     NAME                            READY   UP-TO-DATE   AVAILABLE   AGE
     deployment.apps/islamabad-app   0/0     0            0           2m5s
@@ -184,7 +181,7 @@ vagrant ssh    # will take you the control plane as it is the vagrant default no
 
 ##### Save ETCD data snapshot
 
-```
+
 - Save/backup a snapshot of etcd:  `etcdctl --endpoints snapshot save <filename>` 
 
 ```bash
@@ -226,7 +223,8 @@ $ sudo etcdctl --cacert=/etc/kubernetes/pki/etcd/ca.crt \
   - startup etcd
 - 
 - `etcdctl --endpoints snapshot restore <filename>` 
-```
+
+```bash
 
 $ etcdctl version
 
