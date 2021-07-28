@@ -1,0 +1,71 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  creationTimestamp: null
+  name: dammam-cnj
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dammam-cnj-app
+  namespace: dammam-cnj
+  labels:
+    app: dammam-cnj-app
+spec:
+  selector:
+    matchLabels:
+      app: dammam-cnj-app
+  template:
+    metadata:
+      labels:
+        app: dammam-cnj-app
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+data:
+  POSTGRES_HOST_AUTH_METHOD: trust
+  POSTGRES_PASSWORD: dammam-cnj
+kind: ConfigMap
+metadata:
+  name: dammam-cnj-db-configmap
+  namespace: dammam-cnj
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-db
+  namespace: dammam-cnj
+  labels:
+    app: postgres
+spec:
+  selector:
+    matchLabels:
+      app: postgres-db
+  template:
+    metadata:
+      labels:
+        app: postgres-db
+    spec:
+      containers:
+      - image: postgres
+        name: postgres
+        ports:
+        - containerPort: 5432
+        env:
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              name: dammam-cnj-db-configmap
+              key: POSTGRES_PASSWORD
+        - name: POSTGRES_HOST_AUTH_METHOD
+          valueFrom:
+            configMapKeyRef:
+              name: dammam-cnj-db-configmap
+              key: POSTGRES_HOST_AUTH_METHOD
+
