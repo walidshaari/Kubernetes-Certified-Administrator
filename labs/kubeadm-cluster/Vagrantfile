@@ -6,7 +6,7 @@ Vagrant.configure("2") do |config|
         echo "10.0.0.11  node01" >> /etc/hosts
         echo "10.0.0.12  node02" >> /etc/hosts
     SHELL
-    
+    config.vm.synced_folder ".", "/vagrant" 
     config.vm.define "control-plane", primary: true  do |master|
       master.vm.box = "bento/ubuntu-18.04"
       master.vm.hostname = "control-plane"

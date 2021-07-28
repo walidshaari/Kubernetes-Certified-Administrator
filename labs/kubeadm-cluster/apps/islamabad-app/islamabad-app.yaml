@@ -13,6 +13,7 @@ metadata:
   labels:
     app: islamabad-app
 spec:
+  replicas: 0
   selector:
     matchLabels:
       app: islamabad-app
@@ -25,7 +26,7 @@ spec:
       - image: nginx
         name: nginx
         ports:
-        - containerPort: 8080
+        - containerPort: 80
 ---
 apiVersion: v1
 data:
@@ -44,6 +45,7 @@ metadata:
   labels:
     app: postgres
 spec:
+  replicas: 0
   selector:
     matchLabels:
       app: postgres-db

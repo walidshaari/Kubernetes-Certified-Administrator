@@ -73,6 +73,12 @@ subjects:
   namespace: kubernetes-dashboard
 EOF
 
+
+cd /tmp/ && wget -q https://github.com/etcd-io/etcd/releases/download/v3.4.16/etcd-v3.4.16-linux-amd64.tar.gz
+tar zxvf etcd-v3.4.16-linux-amd64.tar.gz
+cd etcd-v3.4.16-linux-amd64
+sudo cp etcdctl /usr/local/bin
+
 kubectl -n kubernetes-dashboard get secret $(kubectl -n kubernetes-dashboard get sa/admin-user -o jsonpath="{.secrets[0].name}") -o go-template="{{.data.token | base64decode}}" >> /vagrant/configs/token
 
 sudo -i -u vagrant bash << EOF
