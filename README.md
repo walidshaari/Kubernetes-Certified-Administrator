@@ -35,47 +35,46 @@ These are the exam objectives you review and understand in order to pass the tes
 1. [Peform a version upgrade on Kubernetes cluster using kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-upgrade/)
 1. [implment etcd backup and restore](https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/#backing-up-an-etcd-cluster)
 
-[Kubecon Europe 2020: Kubeadm deep dive](https://youtu.be/DhsFfNSIrQ4)
-<details>
-<summary> sample commands used during backup/restore/update of nodes </summary>
-<p>
+    [Kubecon Europe 2020: Kubeadm deep dive](https://youtu.be/DhsFfNSIrQ4)
+  <details>
+  <summary> sample commands used during backup/restore/update of nodes </summary>
+  <p>
 
-```
-#etcd backup and restore brief
-export ETCDCTL_API=3  # needed to specify etcd api versions, not sure if it is needed anylonger with k8s 1.19+ 
-etcdctl snapshot save -h   #find save options
-etcdctl snapshot restore -h  #find restore options
+  ```
+  #etcd backup and restore brief
+  export ETCDCTL_API=3  # needed to specify etcd api versions, not sure if it is needed anylonger with k8s 1.19+ 
+  etcdctl snapshot save -h   #find save options
+  etcdctl snapshot restore -h  #find restore options
 
-## possible example of save, options will change depending on cluster context, as TLS is used need to give ca,crt, and key paths
-etcdctl snapshot save /backup/snapshot.db  --cert=/etc/kubernetes/pki/etcd/server.crt  --key=/etc/kubernetes/pki/etcd/server.key --cacert=/etc/kubernetes/pki/etcd/ca.crt
-
-
-# evicting pods/nodes and bringing back node back to cluster
-kubectl drain  <node># to drain a node
-kubectl uncordon  <node> # to return a node after updates back to the cluster from unscheduled state to Ready
-kubectl cordon  <node>   # to not schedule new pods on a node
-
-#backup/restore the cluster (e.g. the state of the cluster in etcd)
+  ## possible example of save, options will change depending on cluster context, as TLS is used need to give ca,crt, and key paths
+  etcdctl snapshot save /backup/snapshot.db  --cert=/etc/kubernetes/pki/etcd/server.crt  --key=/etc/kubernetes/pki/etcd/server.key --      cacert=/etc/kubernetes/pki/etcd/ca.crt
 
 
-# upgrade kubernetes worker node
-kubectl drain <node>
-apt-get upgrade -y kubeadm=<k8s-version-to-upgrade>
-apt-get upgrade -y kubelet=<k8s-version-to-upgrade>
-kubeadm upgrade node config --kubelet-version <k8s-version-to-upgrade>
-systemctl restart kubelet
-kubectl uncordon <node>
+  # evicting pods/nodes and bringing back node back to cluster
+  kubectl drain  <node># to drain a node
+  kubectl uncordon  <node> # to return a node after updates back to the cluster from unscheduled state to Ready
+  kubectl cordon  <node>   # to not schedule new pods on a node
+
+  #backup/restore the cluster (e.g. the state of the cluster in etcd)
 
 
-#kubeadm upgrade steps
-kubeadm upgrade plan
-kubeadm upgrade apply
+  # upgrade kubernetes worker node
+  kubectl drain <node>
+  apt-get upgrade -y kubeadm=<k8s-version-to-upgrade>
+  apt-get upgrade -y kubelet=<k8s-version-to-upgrade>
+  kubeadm upgrade node config --kubelet-version <k8s-version-to-upgrade>
+  systemctl restart kubelet
+  kubectl uncordon <node>
 
 
-```
+  #kubeadm upgrade steps
+  kubeadm upgrade plan
+  kubeadm upgrade apply
 
-</p>
-</details> 
+  ```
+
+  </p>
+  </details> 
 
 ### Workloads & Scheduling – 15%
 1. [Understand deployments and how to perform rolling update and rollbacks](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
@@ -103,17 +102,17 @@ kubeadm upgrade apply
 
 1. Understand [host networking configuration on the cluster nodes](https://kubernetes.io/docs/concepts/cluster-administration/networking/)
 2. Understand connectivity between Pods
-  - [The concept of Pods networking](https://kubernetes.io/docs/concepts/workloads/pods/#pod-networking)
+    - [The concept of Pods networking](https://kubernetes.io/docs/concepts/workloads/pods/#pod-networking)
 3. Understand ClusterIP, NodePort, LoadBalancer service types and endpoints
-   - [service](https://kubernetes.io/docs/concepts/services-networking/service/)
+    - [service](https://kubernetes.io/docs/concepts/services-networking/service/)
 4. Know how to use [Ingress controllers](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/) and [Ingress resources](https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource)
-  - [Ingress concepts]((https://kubernetes.io/docs/concepts/services-networking/ingress/))
+    - [Ingress concepts]((https://kubernetes.io/docs/concepts/services-networking/ingress/))
 5. [Know how to configure and use CoreDNS](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/)
 6. [Choose an appropriate container network interface plugin](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network)
 
-- [Kubernetes Networking Intro and Deep-Dive - Bowei Du & Tim Hockin, Google](https://youtu.be/tq9ng_Nz9j8)
-- [Kubernetes and Networks: why is this so dang hard?](https://youtu.be/xB190-yyJnY?t=241)
-- [Kubecon Eu 2020 Tutorial: Communication Is Key - Understanding Kubernetes Networking - Jeff Poole, Vivint Smart Home](https://youtu.be/InZVNuKY5GY?list=PLj6h78yzYM2O1wlsM-Ma-RYhfT5LKq0XC)
+    - [Kubernetes Networking Intro and Deep-Dive - Bowei Du & Tim Hockin, Google](https://youtu.be/tq9ng_Nz9j8)
+    - [Kubernetes and Networks: why is this so dang hard?](https://youtu.be/xB190-yyJnY?t=241)
+    - [Kubecon Eu 2020 Tutorial: Communication Is Key - Understanding Kubernetes Networking - Jeff Poole, Vivint Smart Home](https://youtu.be/InZVNuKY5GY?list=PLj6h78yzYM2O1wlsM-Ma-RYhfT5LKq0XC)
 
 
 ### Storage – 10%
@@ -123,68 +122,68 @@ kubeadm upgrade apply
 1. Understand [persistent volume claims](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims) primitive
 1. Know how to [configure applications with persistent storage](https://kubernetes.io/docs/tasks/configure-pod-container/configure-volume-storage/)
 
-<details>
-<summary> StorageClass, PersistentVolume, and PersitentVolumeClaim examples </summary>
-<p>
+  <details>
+  <summary> StorageClass, PersistentVolume, and PersitentVolumeClaim examples </summary>
+  <p>
 
-```
-#### Storage Class example
-#
+  ```
+  #### Storage Class example
+  #
 
-#### Persistent Volume Claim example
-#
-kind: PersistentVolumeClaim
-apiVersion: v1
-metadata:
-  name: local-pvc
-spec:
-  accessModes:
-  - ReadWriteOnce
-  storageClassName: local-storage-sc
-  resources:
-    requests:
-      storage: 100Mi
+  #### Persistent Volume Claim example
+  #
+  kind: PersistentVolumeClaim
+  apiVersion: v1
+  metadata:
+    name: local-pvc
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    storageClassName: local-storage-sc
+    resources:
+      requests:
+        storage: 100Mi
 
-## Persistent Volume example
-#
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: local-pv
-spec:
-  accessModes:
-  - ReadWriteOnce
-  capacity:
-    storage: 200Mi
-  local:
-    path: /data/pv/disk021
-  persistentVolumeReclaimPolicy: Retain
-  storageClassName: local-storage-sc
-  volumeMode: Filesystem
+  ## Persistent Volume example
+  #
+  apiVersion: v1
+  kind: PersistentVolume
+  metadata:
+    name: local-pv
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    capacity:
+      storage: 200Mi
+    local:
+      path: /data/pv/disk021
+    persistentVolumeReclaimPolicy: Retain
+    storageClassName: local-storage-sc
+    volumeMode: Filesystem
   
-###  Pod using the pvc
-#
-apiVersion: v1
-kind: Pod
-metadata:
-  name: nginx
-  labels:
+  ###  Pod using the pvc
+  #
+  apiVersion: v1
+  kind: Pod
+  metadata:
     name: nginx
-spec:
-  containers:
-  - name: nginx
-    image: nginx
-    volumeMounts:
+    labels:
+      name: nginx
+  spec:
+    containers:
+    - name: nginx
+      image: nginx
+      volumeMounts:
+        - name: local-persistent-storage
+          mountPath: /var/www/html
+    volumes:
       - name: local-persistent-storage
-        mountPath: /var/www/html
-  volumes:
-    - name: local-persistent-storage
-      persistentVolumeClaim:
-        claimName: local-pvc
-```
+        persistentVolumeClaim:
+          claimName: local-pvc
+  ```
 
-</p>
-</details> 
+  </p>
+  </details> 
 
 ### Troubleshooting – 30%
 
@@ -271,19 +270,16 @@ complete -F __start_kubectl k
 - [Mumshad CKA with practice tests and mock exams](https://www.udemy.com/course/certified-kubernetes-administrator-with-practice-tests/) - Highly recommended
 - [Killer.sh CKA simulator](https://killer.sh/cka)         &#x27F9; use code **walidshaari** for **20%** discount  - they update frequently
 - [Kube Academy free How to prepare for the CKA exam training](https://kube.academy/courses/how-to-prepare-for-the-cka-exam)
-- [A Cloud Guru - Certified Kubernetes Administrator (CKA)](https://acloud.guru/overview/certified-kubernetes-administrator)  # k8s version 1.20 - last checked March 2021
-- [LinuxAcademy/ACloudGuru CKA course](https://acloud.guru/learn/7f5137aa-2d26-4b19-8d8c-025b22667e76)  # labs last checked were updated to 1.18
+- [A Cloud Guru - Certified Kubernetes Administrator (CKA)](https://acloud.guru/overview/certified-kubernetes-administrator)
+- [Pluralsight CKA course](https://www.pluralsight.com/paths/certified-kubernetes-administrator) by [Anthony E. Nocentino
+](https://twitter.com/nocentino)
+- [LinuxAcademy/ACloudGuru CKA course](https://acloud.guru/learn/7f5137aa-2d26-4b19-8d8c-025b22667e76)
 - [rx-m online CKA course](https://rx-m.com/cka-online-training/)
-- [Pluralsight CKA course](https://www.pluralsight.com/paths/certified-kubernetes-administrator)
 - Duffie Cooly [hands-on CKA video](https://k8s.work/cka-lab.mp4) using KinD and accompanying [notes](https://hackmd.io/@mauilion/cka-lab)
-- [Stilian Stoilov](https://www.linkedin.com/in/stilian-stoilov-379972a9/) [practice questions](https://github.com/StenlyTU/K8s-training-official) - 40+ tasks with increasing difficulty.
+- [Stilian Stoilov](https://www.linkedin.com/in/stilian-stoilov-379972a9/) [practice questions](https://github.com/StenlyTU/K8s-training-official) - 50+ tasks with increasing difficulty.
 
 # What's Next:
 - Learn more about Kubernetes core components from [Duffie Cooly](https://twitter.com/mauilion) [TGIK Grokking playlist](https://www.youtube.com/playlist?list=PL7bmigfV0EqS6WxgWlH-p4dhkfuwcZ6-E)
 - [CKAD Certified Kubernetes Application Developer](https://www.cncf.io/certification/ckad/)
 - [CKS Certified Kubernetes Security Specialist](https://github.com/walidshaari/Certified-Kubernetes-Secuirty-Specialist)
-
-## Stargazers over time
-
-[![Stargazers over time](https://starchart.cc/walidshaari/Kubernetes-Certified-Administrator.svg)](https://starchart.cc/walidshaari/Kubernetes-Certified-Administrator)
-
+- Klustered: live youtube series of advanced level of internals troubleshooting. fun and interesting to watch [Klustered](https://www.youtube.com/playlist?list=PLz0t90fOInA5IyhoT96WhycPV8Km-WICj)
