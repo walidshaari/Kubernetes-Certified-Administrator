@@ -269,6 +269,7 @@ complete -F __start_kubectl k
 
 - [Mumshad CKA with practice tests and mock exams](https://www.udemy.com/course/certified-kubernetes-administrator-with-practice-tests/) - Highly recommended
 - [Killer.sh CKA simulator](https://killer.sh/cka)         &#x27F9; use code **walidshaari** for **20%** discount  - they update frequently
+- [AWS Container hero NANA CKA course](https://www.techworld-with-nana.com/kubernetes-administrator-cka)
 - [Kube Academy free How to prepare for the CKA exam training](https://kube.academy/courses/how-to-prepare-for-the-cka-exam)
 - [A Cloud Guru - Certified Kubernetes Administrator (CKA)](https://acloud.guru/overview/certified-kubernetes-administrator)
 - [Pluralsight CKA course](https://www.pluralsight.com/paths/certified-kubernetes-administrator) by [Anthony E. Nocentino
