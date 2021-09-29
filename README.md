@@ -277,7 +277,9 @@ complete -F __start_kubectl k
 - [rx-m online CKA course](https://rx-m.com/cka-online-training/)
 - Duffie Cooly [hands-on CKA video](https://k8s.work/cka-lab.mp4) using KinD and accompanying [notes](https://hackmd.io/@mauilion/cka-lab)
 - [Stilian Stoilov](https://www.linkedin.com/in/stilian-stoilov-379972a9/) [practice questions](https://github.com/StenlyTU/K8s-training-official) - 50+ tasks with increasing difficulty.
-
+# Quick review material
+      
+- Adnan Rashisd CKA notes:  can be found at https://adnan.study/  
 # What's Next:
 - Learn more about Kubernetes core components from [Duffie Cooly](https://twitter.com/mauilion) [TGIK Grokking playlist](https://www.youtube.com/playlist?list=PL7bmigfV0EqS6WxgWlH-p4dhkfuwcZ6-E)
 - [CKAD Certified Kubernetes Application Developer](https://www.cncf.io/certification/ckad/)
