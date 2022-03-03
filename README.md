@@ -278,6 +278,7 @@ complete -F __start_kubectl k
 - [rx-m online CKA course](https://rx-m.com/cka-online-training/)
 - Duffie Cooly [hands-on CKA video](https://k8s.work/cka-lab.mp4) using KinD and accompanying [notes](https://hackmd.io/@mauilion/cka-lab)
 - [Stilian Stoilov](https://www.linkedin.com/in/stilian-stoilov-379972a9/) [practice questions](https://github.com/StenlyTU/K8s-training-official) - 50+ tasks with increasing difficulty.
+- [Killercoda in-browser CKA Playground and Challenges](https://killercoda.com/killer-shell-cka) - FREE
 # Quick review material
       
 - Adnan Rashisd CKA notes:  can be found at https://adnan.study/  
