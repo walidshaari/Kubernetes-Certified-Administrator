@@ -1,5 +1,9 @@
-ENV['VAGRANT_DEFAULT_PROVIDER'] = "virtualbox"
 Vagrant.configure("2") do |config|
+    if RUBY_PLATFORM.include?("arm64")
+      config.vm.box = "bento/ubuntu-22.04-arm64"
+    else
+      config.vm.box = "bento/ubuntu-22.04"
+    end
     config.vm.provision "shell", inline: <<-SHELL
         apt-get update -y
         echo "10.0.0.10  control-plane" >> /etc/hosts
@@ -8,12 +12,15 @@ Vagrant.configure("2") do |config|
     SHELL
     config.vm.synced_folder ".", "/vagrant" 
     config.vm.define "control-plane", primary: true  do |master|
-      master.vm.box = "bento/ubuntu-18.04"
       master.vm.hostname = "control-plane"
-      master.vm.network "private_network", ip: "10.0.0.10"
+      master.vm.network "private_network", ip: "10.0.0.10", virtualbox__intnet: true
       master.vm.provider "virtualbox" do |vb|
           vb.memory = 2048
           vb.cpus = 2
+      end
+      master.vm.provider "vmware_fusion" do |vm|
+          vm.vmx["memsize"] = "2048"
+          vm.vmx["numvcpus"] = "2"
       end
       master.vm.provision "shell", path: "scripts/common.sh"
       master.vm.provision "shell", path: "scripts/cp.sh"
@@ -22,12 +29,15 @@ Vagrant.configure("2") do |config|
     (1..2).each do |i|
   
     config.vm.define "node0#{i}" do |node|
-      node.vm.box = "bento/ubuntu-18.04"
       node.vm.hostname = "node0#{i}"
-      node.vm.network "private_network", ip: "10.0.0.1#{i}"
+      node.vm.network "private_network", ip: "10.0.0.1#{i}", virtualbox__intnet: true
       node.vm.provider "virtualbox" do |vb|
           vb.memory = 2048
           vb.cpus = 1
+      end
+      node.vm.provider "vmware_fusion" do |vm|
+          vm.vmx["memsize"] = "2048"
+          vm.vmx["numvcpus"] = "1"
       end
       node.vm.provision "shell", path: "scripts/common.sh"
       node.vm.provision "shell", path: "scripts/node.sh"
