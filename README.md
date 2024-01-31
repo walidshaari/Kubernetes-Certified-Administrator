@@ -208,7 +208,7 @@ Get familiar with:
   - https://kubernetes.io/docs/user-guide/kubectl-cheatsheet/
   - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands
 *  `kubectl api-versions` and `kubectl  api-resources` wih `grep` for a specific resoruce e.g. pv, pvc, deployment, storageclass, ..etc can help figure out the **apiVersion**, and **kind** combined with explain below will help in constructing the yaml manifest
-* [kubectl explain --recurisve](https://blog.heptio.com/kubectl-explain-heptioprotip-ee883992a243) to construct out any yaml manifest you need and find its specd and details
+* [kubectl explain --recursive](https://blog.heptio.com/kubectl-explain-heptioprotip-ee883992a243) to construct out any yaml manifest you need and find its specd and details
 
 * When using kubectl for investigations and troubleshooting utilize the wide output it gives your more details
 ```
@@ -216,7 +216,7 @@ Get familiar with:
      or
      $kubectl get pods -o wide  --show-labels  -A     # -A is quicker than --all-namespaces
 ```
-* In `kubectl` utilizie `--all-namespaces or better -A` to ensure deployments, pods, objects are on the right name space, and right desired state
+* In `kubectl` utilize `--all-namespaces or better -A` to ensure deployments, pods, objects are on the right name space, and right desired state
 
 * for events and troubleshooting utilize kubectl describe if its pod/resource related and logs if it is application issue related
 ```
