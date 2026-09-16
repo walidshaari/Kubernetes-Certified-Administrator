@@ -40,35 +40,61 @@ These are the exam objectives you review and understand in order to pass the tes
   <p>
 
   ```
-  #etcd backup and restore brief
-  export ETCDCTL_API=3  # needed to specify etcd api versions, not sure if it is needed anylonger with k8s 1.19+ 
-  etcdctl snapshot save -h   #find save options
-  etcdctl snapshot restore -h  #find restore options
+  # etcd backup and restore
+  # ETCDCTL_API=3 is the default from etcd 3.4 onwards, but setting it explicitly is harmless
+  etcdctl snapshot save -h   # find save options
+  etcdutl snapshot restore -h  # find restore options
 
-  ## possible example of save, options will change depending on cluster context, as TLS is used need to give ca,crt, and key paths
-  etcdctl snapshot save /backup/snapshot.db  --cert=/etc/kubernetes/pki/etcd/server.crt  --key=/etc/kubernetes/pki/etcd/server.key --      cacert=/etc/kubernetes/pki/etcd/ca.crt
+  # save a snapshot - against a TLS-enabled etcd you must pass the endpoint AND the ca/cert/key.
+  # Omitting --endpoints silently falls back to 127.0.0.1:2379, which is not always where etcd listens.
+  ETCDCTL_API=3 etcdctl --endpoints=https://127.0.0.1:2379 \
+    --cacert=/etc/kubernetes/pki/etcd/ca.crt \
+    --cert=/etc/kubernetes/pki/etcd/server.crt \
+    --key=/etc/kubernetes/pki/etcd/server.key \
+    snapshot save /backup/snapshot.db
+
+  # verify the snapshot
+  etcdutl --write-out=table snapshot status /backup/snapshot.db
+
+  # restore into a NEW data directory.
+  # NOTE: `etcdctl snapshot restore` is deprecated since etcd 3.5 and removed in etcd 3.6 - use etcdutl.
+  etcdutl --data-dir /var/lib/etcd-restore snapshot restore /backup/snapshot.db
+
+  # then point the static pod at the restored data directory and let the kubelet restart it:
+  #   edit /etc/kubernetes/manifests/etcd.yaml and set volumes.hostPath.path
+  #   for the volume named `etcd-data` to /var/lib/etcd-restore
 
 
-  # evicting pods/nodes and bringing back node back to cluster
-  kubectl drain  <node># to drain a node
-  kubectl uncordon  <node> # to return a node after updates back to the cluster from unscheduled state to Ready
-  kubectl cordon  <node>   # to not schedule new pods on a node
-
-  #backup/restore the cluster (e.g. the state of the cluster in etcd)
+  # evicting pods/nodes and bringing a node back into the cluster
+  kubectl drain <node> --ignore-daemonsets   # drain a node (DaemonSet pods cannot be evicted)
+  kubectl uncordon <node>                    # return a node to the cluster as schedulable
+  kubectl cordon <node>                      # stop scheduling new pods on a node
 
 
-  # upgrade kubernetes worker node
-  kubectl drain <node>
-  apt-get upgrade -y kubeadm=<k8s-version-to-upgrade>
-  apt-get upgrade -y kubelet=<k8s-version-to-upgrade>
-  kubeadm upgrade node config --kubelet-version <k8s-version-to-upgrade>
-  systemctl restart kubelet
-  kubectl uncordon <node>
+  # upgrade a kubernetes WORKER node (Debian/Ubuntu, run on the node itself unless noted)
+  # 1. upgrade kubeadm and kubectl
+  sudo apt-mark unhold kubeadm kubectl && \
+    sudo apt-get update && sudo apt-get install -y kubeadm='1.35.x-*' kubectl='1.35.x-*' && \
+    sudo apt-mark hold kubeadm kubectl
+  # 2. upgrade the local kubelet config
+  sudo kubeadm upgrade node
+  # 3. drain the node (run from a control plane node)
+  kubectl drain <node-to-drain> --ignore-daemonsets
+  # 4. upgrade the kubelet
+  sudo apt-mark unhold kubelet && \
+    sudo apt-get update && sudo apt-get install -y kubelet='1.35.x-*' && \
+    sudo apt-mark hold kubelet
+  # 5. restart the kubelet
+  sudo systemctl daemon-reload
+  sudo systemctl restart kubelet
+  # 6. uncordon the node (run from a control plane node)
+  kubectl uncordon <node-to-uncordon>
 
 
-  #kubeadm upgrade steps
-  kubeadm upgrade plan
-  kubeadm upgrade apply
+  # kubeadm control plane upgrade steps
+  sudo kubeadm upgrade plan                # shows which versions you can upgrade to
+  sudo kubeadm upgrade apply v1.35.x       # FIRST control plane node only
+  sudo kubeadm upgrade node                # every OTHER control plane node, and worker nodes
 
   ```
 
@@ -235,7 +261,7 @@ kubectl create --edit -f /tmp/srv.yaml
 alias k='kubectl'
 alias kg='kubectl get'
 alias kgpo='kubectl get pod'
-alias kcpyd='kubectl create pod -o yaml --dry-run=client'
+alias kcpyd='kubectl run -o yaml --dry-run=client'   # `kubectl create pod` is not a valid subcommand - pods are created with `kubectl run`
 alias ksysgpo='kubectl --namespace=kube-system get pod'
 
 alias kd='kubectl delete'
