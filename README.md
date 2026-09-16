@@ -167,8 +167,9 @@ Domain weights are unchanged: Troubleshooting 30%, Cluster Architecture 25%, Ser
   # 2. plan and apply
   sudo kubeadm upgrade plan                # shows which versions you can upgrade to
   sudo kubeadm upgrade apply v1.35.x       # FIRST control plane node only
-  #    every OTHER control plane node: upgrade the kubeadm package, then
-  sudo kubeadm upgrade node
+  # every OTHER control plane node: upgrade the kubeadm package, then run
+  #   sudo kubeadm upgrade node
+  # instead of `kubeadm upgrade apply`
   # 3. the control plane node still needs its kubelet and kubectl upgraded,
   #    exactly like a worker (drain, upgrade, restart, uncordon)
   kubectl drain <cp-node> --ignore-daemonsets
