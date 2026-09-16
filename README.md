@@ -146,10 +146,28 @@ Domain weights are unchanged: Troubleshooting 30%, Cluster Architecture 25%, Ser
   kubectl uncordon <node-to-uncordon>
 
 
-  # kubeadm control plane upgrade steps
+  # kubeadm CONTROL PLANE upgrade steps (one node at a time, first node shown)
+  # 0. change the package repository to the target minor version (see worker step 0)
+  # 1. upgrade the kubeadm package FIRST - `kubeadm upgrade plan` is run by the
+  #    new kubeadm binary, so upgrading it is a prerequisite, not an afterthought
+  sudo apt-mark unhold kubeadm && \
+    sudo apt-get update && sudo apt-get install -y kubeadm='1.35.x-*' && \
+    sudo apt-mark hold kubeadm
+  kubeadm version                          # confirm the new binary is in place
+  # 2. plan and apply
   sudo kubeadm upgrade plan                # shows which versions you can upgrade to
   sudo kubeadm upgrade apply v1.35.x       # FIRST control plane node only
-  sudo kubeadm upgrade node                # every OTHER control plane node, and worker nodes
+  #    every OTHER control plane node: upgrade the kubeadm package, then
+  sudo kubeadm upgrade node
+  # 3. the control plane node still needs its kubelet and kubectl upgraded,
+  #    exactly like a worker (drain, upgrade, restart, uncordon)
+  kubectl drain <cp-node> --ignore-daemonsets
+  sudo apt-mark unhold kubelet kubectl && \
+    sudo apt-get update && sudo apt-get install -y kubelet='1.35.x-*' kubectl='1.35.x-*' && \
+    sudo apt-mark hold kubelet kubectl
+  sudo systemctl daemon-reload
+  sudo systemctl restart kubelet
+  kubectl uncordon <cp-node>
 
   ```
 
