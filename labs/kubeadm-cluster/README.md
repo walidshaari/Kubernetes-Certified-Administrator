@@ -10,8 +10,7 @@
 
 1. Working Vagrant setup. The upstream lab was tested with VirtualBox.
    A libvirt/KVM provider is also configured, for Linux hosts where KVM is
-   the native choice - see below. The libvirt path has not been booted yet,
-   so treat it as untested.
+   the native choice - see below.
 2. As configured in the Vagrantfile the three VMs use 4 vCPUs and 6 GB RAM in
    total (control plane 2 vCPU / 2 GB, each of the two workers 1 vCPU / 2 GB),
    so give the host at least 8 GB RAM.
@@ -22,12 +21,28 @@ On Fedora and most Linux hosts, KVM is built into the kernel, while VirtualBox
 needs out-of-tree modules that break across kernel updates and with Secure Boot.
 
 ```bash
-sudo dnf install vagrant vagrant-libvirt libvirt libvirt-devel
-sudo systemctl enable --now libvirtd
+sudo dnf install vagrant vagrant-libvirt libvirt libvirt-devel nfs-utils
+sudo systemctl enable --now libvirtd nfs-server
 sudo usermod -aG libvirt $USER   # log out and back in
 cd labs/kubeadm-cluster
-vagrant up --provider=libvirt
+vagrant up --provider=libvirt --no-parallel
 ```
+
+**`--no-parallel` is required.** With VirtualBox, Vagrant brings the machines
+up one at a time. Under libvirt it creates them in parallel, so the workers run
+`node.sh` while the control plane is still running `kubeadm init`, and fail with
+`/vagrant/configs/join.sh: No such file or directory`. The control plane has to
+finish before a worker can join, and there is no Vagrantfile setting that forces
+serial ordering - it is a command-line flag.
+
+`/vagrant` is shared over NFS, which is vagrant-libvirt's default and needs
+`nfs-utils` and a running `nfs-server` on the host. `vagrant up` will ask for
+sudo to edit `/etc/exports`, and the libvirt firewall zone has to allow NFS.
+Do not switch this to 9p: with `qemu:///system` QEMU runs as `qemu:qemu` and
+needs to traverse *and write* the exported directory, which a project directory
+under `$HOME` does not allow (home directories are 0700/0710), and `cp.sh`
+writes `/vagrant/configs`. A path with spaces in it is also worth avoiding,
+since `/etc/exports` is whitespace-delimited.
 
 Install `vagrant` and `vagrant-libvirt` **from the same source**. Mixing
 HashiCorp's vagrant RPM, which lives in `/opt/vagrant` with its own bundled
