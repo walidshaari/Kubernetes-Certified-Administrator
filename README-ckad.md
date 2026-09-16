@@ -17,11 +17,11 @@ These are the exam objectives you review and understand in order to pass the tes
 
 ### [Core Concepts](https://kubernetes.io/docs/concepts/) 13%
 
-* [Understand the Kubernetes API primitives](https://v1-9.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.9/)
+* [Understand the Kubernetes API primitives](https://kubernetes.io/docs/reference/kubernetes-api/)
 * [Create and configure basic Pods](https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/)
 
 
-### [Configuration](https://v1-9.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.9/#-strong-config-storage-strong-) 18%
+### [Configuration](https://kubernetes.io/docs/reference/kubernetes-api/config-and-storage-resources/config-map-v1/) 18%
 
 * Understand ConfigMaps
     * [Configure a Pod to Use a ConfigMap](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/)
