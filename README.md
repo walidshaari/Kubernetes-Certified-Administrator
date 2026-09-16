@@ -414,10 +414,11 @@ complete -F __start_kubectl k
 ## Popular training and practice sites:
 *Double check if the course is uptodate with the latest exam information (e.g. api, or curriculum)*
 
+VMware's KubeAcademy has been retired ([notice](https://kube.academy/retirement)) and its free "How to prepare for the CKA exam" course was removed from this list. Every other link below was opened and serves a real course page.
+
 - [Mumshad CKA with practice tests and mock exams](https://www.udemy.com/course/certified-kubernetes-administrator-with-practice-tests/) - Highly recommended
 - [Killer.sh CKA simulator](https://killer.sh/cka)         &#x27F9; use code **walidshaari** for **20%** discount  - they update frequently
 - [AWS Container hero NANA CKA course](https://www.techworld-with-nana.com/kubernetes-administrator-cka)
-- [Kube Academy free How to prepare for the CKA exam training](https://kube.academy/courses/how-to-prepare-for-the-cka-exam)
 - [Pluralsight CKA course](https://www.pluralsight.com/paths/certified-kubernetes-administrator) by [Anthony E. Nocentino
 ](https://twitter.com/nocentino)
 - [rx-m online CKA course](https://rx-m.com/cka-online-training/)
