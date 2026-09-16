@@ -99,7 +99,7 @@ get familiar with:
 ```
      $kubectl describe pods <PODID>
 ```
-* the '-o yaml' in conjuction with `--dry-run` allows you to create a manifest template from an imperative spec, combined with `--edit` it allows you to modify the object before creation
+* the '-o yaml' in conjunction with `--dry-run` allows you to create a manifest template from an imperative spec, combined with `--edit` it allows you to modify the object before creation
 ```
 kubectl create service clusterip my-svc -o yaml --dry-run > /tmp/srv.yaml
 kubectl create --edit -f /tmp/srv.yaml

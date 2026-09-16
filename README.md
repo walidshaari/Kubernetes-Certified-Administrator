@@ -11,7 +11,7 @@ I tried to restrict the cross references of resources to [kubernetes.io](https:/
 
 Ensure you have the right version of Kubernetes documentation selected (v1.35 as of the September 2026 exam environment) especially for API objects and annotations.
 
-LDR:  **practice**       **practice**      **practice**
+TL;DR:  **practice**       **practice**      **practice**
 
 ## Other CK exams:
 - [Certified Kubernetes Security Specialist CKS](https://github.com/walidshaari/Certified-Kubernetes-Secuirty-Specialist)
@@ -205,7 +205,7 @@ Domain weights are unchanged: Troubleshooting 30%, Cluster Architecture 25%, Ser
     - [Volume snapshots](https://kubernetes.io/docs/concepts/storage/volume-snapshots/)
 
   <details>
-  <summary> StorageClass, PersistentVolume, and PersitentVolumeClaim examples </summary>
+  <summary> StorageClass, PersistentVolume, and PersistentVolumeClaim examples </summary>
   <p>
 
   ```
@@ -296,7 +296,7 @@ Get familiar with:
   - https://kubernetes.io/docs/tasks/ 
   - https://kubernetes.io/docs/reference/kubectl/cheatsheet/
   - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands
-*  `kubectl api-versions` and `kubectl  api-resources` wih `grep` for a specific resoruce e.g. pv, pvc, deployment, storageclass, ..etc can help figure out the **apiVersion**, and **kind** combined with explain below will help in constructing the yaml manifest
+*  `kubectl api-versions` and `kubectl  api-resources` with `grep` for a specific resource e.g. pv, pvc, deployment, storageclass, ..etc can help figure out the **apiVersion**, and **kind** combined with explain below will help in constructing the yaml manifest
 * [kubectl explain --recursive](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_explain/) to construct out any yaml manifest you need and find its specd and details
 
 * When using kubectl for investigations and troubleshooting utilize the wide output it gives your more details
@@ -314,12 +314,12 @@ Get familiar with:
      
 ```
 
-* [fast with kubectl](https://medium.com/faun/be-fast-with-kubectl-1-18-ckad-cka-31be00acc443)  e.g. the '-o yaml' in conjuction with `--dry-run=client` allows you to create a manifest template from an imperative spec, combined with `--edit` it allows you to modify the object before creation
+* [fast with kubectl](https://medium.com/faun/be-fast-with-kubectl-1-18-ckad-cka-31be00acc443)  e.g. the '-o yaml' in conjunction with `--dry-run=client` allows you to create a manifest template from an imperative spec, combined with `--edit` it allows you to modify the object before creation
 ```
 kubectl create service clusterip my-svc -o yaml --dry-run=client > /tmp/srv.yaml
 kubectl create --edit -f /tmp/srv.yaml
 ```
-* use kubectl [aliases](https://github.com/ahmetb/kubectl-aliases) to speed up and reduce typo errors, practice these alaises early at your work and study for the exam. some example aliases:
+* use kubectl [aliases](https://github.com/ahmetb/kubectl-aliases) to speed up and reduce typo errors, practice these aliases early at your work and study for the exam. some example aliases:
 
 ```
 alias k='kubectl'
@@ -354,7 +354,7 @@ complete -F __start_kubectl k
 1. [Troubleshooting use cases by Ian/Container solutions](https://github.com/ContainerSolutions/kubernetes-examples)
 
 ## Popular training and practice sites:
-*Double check if the course is uptodate with the latest exam information (e.g. api, or curicuilim)*
+*Double check if the course is uptodate with the latest exam information (e.g. api, or curriculum)*
 
 - [Mumshad CKA with practice tests and mock exams](https://www.udemy.com/course/certified-kubernetes-administrator-with-practice-tests/) - Highly recommended
 - [Killer.sh CKA simulator](https://killer.sh/cka)         &#x27F9; use code **walidshaari** for **20%** discount  - they update frequently
