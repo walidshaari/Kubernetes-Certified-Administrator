@@ -132,8 +132,8 @@ Domain weights are unchanged: Troubleshooting 30%, Cluster Architecture 25%, Ser
   #    `apt-get install kubeadm='1.35.x-*'` cannot find the package at all.
   #    Only needed when crossing a minor version (1.34 -> 1.35), not for
   #    a patch bump within the same minor (1.35.5 -> 1.35.7).
-  #    Debian/Ubuntu: /etc/apt/sources.list.d/kubernetes.list
-  #    RHEL/Fedora:   /etc/yum.repos.d/kubernetes.repo
+  #    On RHEL/Fedora the equivalent file is /etc/yum.repos.d/kubernetes.repo.
+  # Debian/Ubuntu:
   sudo sed -i 's#/v1.34/#/v1.35/#' /etc/apt/sources.list.d/kubernetes.list
   # find the exact patch version available in that repository
   sudo apt update && sudo apt-cache madison kubeadm
