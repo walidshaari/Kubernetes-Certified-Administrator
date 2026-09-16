@@ -38,7 +38,7 @@ Docs: [Resource management for Pods and containers](https://kubernetes.io/docs/c
 
 **Misconception:** Container fundamentals are optional background for the CKA.
 **Reality:** Many cluster failures trace back to container internals. A kubelet and container runtime configured with **different cgroup drivers** (`systemd` vs `cgroupfs`) is a classic cause of a node that won't come up. Namespaces (what a process can see), cgroups (what it can use) and layered filesystems (how images are built) are the three kernel mechanisms underneath every Pod.
-Docs: [Configuring a cgroup driver](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/configure-cgroup-driver/)
+Docs: [Configuring a cgroup driver](https://kubernetes.io/docs/setup/production-environment/container-runtimes/#cgroup-drivers)
 
 ## Lab environments
 
