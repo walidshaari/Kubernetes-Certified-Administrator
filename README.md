@@ -90,6 +90,13 @@ Domain weights are unchanged: Troubleshooting 30%, Cluster Architecture 25%, Ser
     - [Operator pattern](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/)
 
     [Kubecon Europe 2020: Kubeadm deep dive](https://youtu.be/DhsFfNSIrQ4)
+
+> The etcd and kubeadm upgrade commands below were run against a real
+> two-node kubeadm cluster built from [`labs/kubeadm-cluster`](labs/kubeadm-cluster),
+> upgrading it from v1.34.11 to v1.35.8 (September 2026). Step 0, the package
+> repository change, is not optional: without it
+> `apt-get install kubeadm='1.35.8-1.1'` fails with
+> `E: Version '1.35.8-1.1' for 'kubeadm' was not found`.
   <details>
   <summary> sample commands used during backup/restore/update of nodes </summary>
   <p>
