@@ -9,7 +9,7 @@ Online resources that will help you prepare for taking the Kubernetes Certified 
 
 I tried to restrict the cross references of resources to [kubernetes.io](kubernetes.io). Youtube videos and other blog resources are optional; however, I still found them useful in my k8s learning journey.
 
-Ensure you have the right version of Kubernetes documentation selected (e.g. v1.31 as of Oct 2024 exam) especially for API objects and annotations.
+Ensure you have the right version of Kubernetes documentation selected (v1.35 as of the September 2026 exam environment) especially for API objects and annotations.
 
 LDR:  **practice**       **practice**      **practice**
 
@@ -17,22 +17,67 @@ LDR:  **practice**       **practice**      **practice**
 - [Certified Kubernetes Security Specialist CKS](https://github.com/walidshaari/Certified-Kubernetes-Secuirty-Specialist)
 - [Certified Kubernetes Application Developer CKAD](https://github.com/dgkanatsios/CKAD-exercises)
 
-## CKA 2023 Exam Objectives
+## CKA Exam Objectives
 
 These are the exam objectives you review and understand in order to pass the test.
 
-* [CNCF Exam Curriculum repository ](https://github.com/cncf/curriculum)
+* [CNCF Exam Curriculum repository](https://github.com/cncf/curriculum) - the authoritative source. The current file is [CKA_Curriculum_v1.35.pdf](https://github.com/cncf/curriculum/blob/master/CKA_Curriculum_v1.35.pdf).
 
-### [ Cluster Architecture, Installation, and Configuration](https://youtu.be/vS-wXo2qbPs) 25%
-1. [Manage role based access control](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)
-    - [Lab: RBAC with Kubernetes in Minikube](https://medium.com/@HoussemDellai/rbac-with-kubernetes-in-minikube-4deed658ea7b)
-1. [Use kubeadm to install a basic cluster](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/)
-    - [Lab: Install Kubernetes On Ubuntu](https://phoenixnap.com/kb/install-kubernetes-on-ubuntu)
-1. [Manage a highly available Kubernetes cluster](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/high-availability/)
-    - [Options for Highly Available topology](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/ha-topology/)
-1. [Provision underlying infrastructure to deploy Kubernetes cluster](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
-1. [Peform a version upgrade on Kubernetes cluster using kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-upgrade/)
-1. [implment etcd backup and restore](https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/#backing-up-an-etcd-cluster)
+| | |
+|---|---|
+| Exam environment | Kubernetes v1.35 |
+| Duration | 2 hours |
+| Passing score | 66% |
+| Included | 2 exam attempts, 2 Killer.sh simulator sessions |
+| Validity | 2 years |
+
+The exam environment is aligned with the most recent Kubernetes minor release within roughly 4 to 8 weeks of that release, so confirm the version in the [CKA/CKAD/CKS FAQ](https://docs.linuxfoundation.org/tc-docs/certification/faq-cka-ckad-cks) and on the [CKA certification page](https://training.linuxfoundation.org/certification/certified-kubernetes-administrator-cka/) before you sit it.
+
+### What changed from the older curriculum
+
+If you studied from an older version of this README or an older course, these are the differences that matter. Items marked **new** were not in the previous curriculum at all.
+
+* **Helm and Kustomize** are now an explicit, hands-on Cluster Architecture item, not the old "awareness of manifest management and common templating tools" bullet under Workloads.
+* **CRDs and operators** are **new**: you are expected to install and configure an operator, not just recognise the pattern.
+* **Extension interfaces (CNI, CSI, CRI)** are **new** as a concept item. The old "choose an appropriate CNI plugin" bullet under Networking was folded into this.
+* **Gateway API** is **new** under Services and Networking, alongside Ingress rather than replacing it.
+* **Network Policies** are now called out explicitly ("define and enforce"), where previously they were not listed for CKA at all.
+* **Workload autoscaling** (HorizontalPodAutoscaler) is **new** under Workloads and Scheduling.
+* **Pod admission and scheduling** replaces the narrower "understand how resource limits can affect Pod scheduling".
+* Dropped: "provision underlying infrastructure" became "prepare underlying infrastructure", "understand host networking configuration on the cluster nodes" is gone, and the standalone "know how to scale applications" bullet was folded into autoscaling.
+
+Domain weights are unchanged: Troubleshooting 30%, Cluster Architecture 25%, Services and Networking 20%, Workloads and Scheduling 15%, Storage 10%.
+
+### [Cluster Architecture, Installation and Configuration](https://youtu.be/vS-wXo2qbPs) - 25%
+
+1. [Manage role based access control (RBAC)](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)
+    - [ServiceAccounts](https://kubernetes.io/docs/concepts/security/service-accounts/) and [configuring a Pod to use one](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/)
+    - [Checking API access with kubectl auth can-i](https://kubernetes.io/docs/reference/access-authn-authz/authorization/#checking-api-access)
+1. [Prepare underlying infrastructure for installing a Kubernetes cluster](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
+    - [Container runtimes](https://kubernetes.io/docs/setup/production-environment/container-runtimes/) - cgroup driver, required ports, kernel modules and sysctls
+1. [Create and manage Kubernetes clusters using kubeadm](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/)
+    - [kubeadm reference](https://kubernetes.io/docs/reference/setup-tools/kubeadm/), [kubeadm init](https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-init/), [kubeadm join](https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-join/)
+1. [Manage the lifecycle of Kubernetes clusters](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/)
+    - [Upgrading Linux nodes](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/upgrading-linux-nodes/)
+    - [Certificate management with kubeadm](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-certs/)
+    - [Operating etcd clusters - backup and restore](https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/)
+1. [Implement and configure a highly-available control plane](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/high-availability/)
+    - [Options for highly available topology](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/ha-topology/) - stacked vs external etcd
+    - [Cluster components](https://kubernetes.io/docs/concepts/overview/components/) and [architecture](https://kubernetes.io/docs/concepts/architecture/)
+1. Use **Helm** and **Kustomize** to install cluster components
+    - [Kustomize - declarative management of objects](https://kubernetes.io/docs/tasks/manage-kubernetes-objects/kustomization/)
+    - [Managing Kubernetes objects](https://kubernetes.io/docs/tasks/manage-kubernetes-objects/)
+    - Non-k8s.io resource: [Using Helm](https://helm.sh/docs/intro/using_helm/) and [Helm charts](https://helm.sh/docs/topics/charts/)
+    - [Installing addons](https://kubernetes.io/docs/concepts/cluster-administration/addons/)
+1. Understand **extension interfaces (CNI, CSI, CRI, etc.)**
+    - [Network plugins (CNI)](https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/)
+    - [CSI volumes](https://kubernetes.io/docs/concepts/storage/volumes/#csi)
+    - [Container Runtime Interface (CRI)](https://kubernetes.io/docs/concepts/architecture/cri/)
+1. Understand **CRDs, install and configure operators**
+    - [Custom resources](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/)
+    - [Extend the Kubernetes API with CustomResourceDefinitions](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/)
+    - [CRD versioning](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definition-versioning/)
+    - [Operator pattern](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/)
 
     [Kubecon Europe 2020: Kubeadm deep dive](https://youtu.be/DhsFfNSIrQ4)
   <details>
@@ -99,53 +144,65 @@ These are the exam objectives you review and understand in order to pass the tes
   ```
 
   </p>
-  </details> 
+  </details>
 
-### Workloads & Scheduling – 15%
-1. [Understand deployments and how to perform rolling update and rollbacks](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
-2. Use [ConfigMaps](https://kubernetes.io/docs/concepts/configuration/configmap/) and [Secrets](https://kubernetes.io/docs/concepts/configuration/secret/) to configure applications
-  - [configure a pod with a configmap](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/)
-  - [configure a pod with a secret](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/)
-3. Know how to [scale applications](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#scaling-a-deployment)
-  - [scaling a statefulset](https://kubernetes.io/docs/tasks/run-application/scale-stateful-set/)
-  - [scaling a replicaset](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/#scaling-a-replicaset)
-4. Understand the primitives used to create robust, self-healing, application deployments
- - [Replicaset](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/)
- - [Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
- - [Statefulsets](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/)
- - [Daemonset](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/)
-5. Understand [how resource limits can affect Pod scheduling](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#how-pods-with-resource-requests-are-scheduled)
-6. Awareness of manifest management and common templating tools
-  * [Kustomize](https://kubernetes.io/docs/tasks/manage-kubernetes-objects/kustomization/)
-    - [Kustomize Blog](https://kubernetes.io/blog/2018/05/29/introducing-kustomize-template-free-configuration-customization-for-kubernetes/)
-  * [manage kubernetes objects](https://kubernetes.io/docs/tasks/manage-kubernetes-objects/)
-  * [Helm - using Helm](https://helm.sh/docs/intro/using_helm/) (the Service Catalog page this used to link to was retired along with Service Catalog itself)
-    - Non-k8s.io resource: CNCF Kubecon video: [An introduction to Helm - Bridget Kromhout, Microsoft & Marc Khouzam, City of Montreal](https://youtu.be/x2w6T0sE50w?list=PLj6h78yzYM2O1wlsM-Ma-RYhfT5LKq0XC)
-   - Non-k8s.io resource: External resource: [templating-yaml-with-code](https://learnk8s.io/templating-yaml-with-code)
+### Workloads and Scheduling - 15%
 
-### Services & Networking – 20% 
+1. [Understand application deployments and how to perform rolling update and rollbacks](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
+    - [Rolling back a deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#rolling-back-a-deployment)
+1. Use [ConfigMaps](https://kubernetes.io/docs/concepts/configuration/configmap/) and [Secrets](https://kubernetes.io/docs/concepts/configuration/secret/) to configure applications
+    - [Configure a Pod with a ConfigMap](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/)
+    - [Configure a Pod with a Secret](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/)
+1. Configure **workload autoscaling**
+    - [Autoscaling workloads](https://kubernetes.io/docs/concepts/workloads/autoscaling/)
+    - [HorizontalPodAutoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)
+    - [HorizontalPodAutoscaler walkthrough](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/) - needs metrics-server
+    - [Scaling a StatefulSet](https://kubernetes.io/docs/tasks/run-application/scale-stateful-set/)
+1. Understand the primitives used to create robust, self-healing, application deployments
+    - [ReplicaSet](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/)
+    - [Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
+    - [StatefulSets](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/)
+    - [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/)
+    - [Disruptions and PodDisruptionBudgets](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/)
+1. Configure **Pod admission and scheduling** (limits, node affinity, etc.)
+    - [Assigning Pods to Nodes](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/) - nodeSelector, node affinity, pod affinity and anti-affinity
+    - [Taints and tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/)
+    - [Resource requests and limits](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/)
+    - [LimitRange](https://kubernetes.io/docs/concepts/policy/limit-range/) and [ResourceQuota](https://kubernetes.io/docs/concepts/policy/resource-quotas/)
+    - [Admission controllers](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/)
+    - [Pod priority and preemption](https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/)
 
-1. Understand [host networking configuration on the cluster nodes](https://kubernetes.io/docs/concepts/cluster-administration/networking/)
-2. Understand connectivity between Pods
-    - [The concept of Pods networking](https://kubernetes.io/docs/concepts/workloads/pods/#pod-networking)
-3. Understand ClusterIP, NodePort, LoadBalancer service types and endpoints
-    - [service](https://kubernetes.io/docs/concepts/services-networking/service/)
-4. Know how to use [Ingress controllers](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/) and [Ingress resources](https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource)
-    - [Ingress concepts]((https://kubernetes.io/docs/concepts/services-networking/ingress/))
-5. [Know how to configure and use CoreDNS](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/)
-6. [Choose an appropriate container network interface plugin](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network)
+### Services and Networking - 20%
+
+1. Understand connectivity between Pods
+    - [Cluster networking](https://kubernetes.io/docs/concepts/cluster-administration/networking/)
+    - [Pod networking](https://kubernetes.io/docs/concepts/workloads/pods/#pod-networking)
+1. Define and enforce **Network Policies**
+    - [Network Policies](https://kubernetes.io/docs/concepts/services-networking/network-policies/)
+    - [Declare a network policy](https://kubernetes.io/docs/tasks/administer-cluster/declare-network-policy/)
+1. Use ClusterIP, NodePort, LoadBalancer service types and endpoints
+    - [Service](https://kubernetes.io/docs/concepts/services-networking/service/)
+    - [EndpointSlices](https://kubernetes.io/docs/concepts/services-networking/endpoint-slices/)
+1. Use the **Gateway API** to manage Ingress traffic
+    - [Gateway API](https://kubernetes.io/docs/concepts/services-networking/gateway/)
+    - Non-k8s.io resource: [Gateway API guides](https://gateway-api.sigs.k8s.io/guides/) - GatewayClass, Gateway, HTTPRoute
+1. Know how to use [Ingress controllers](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/) and [Ingress resources](https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource)
+    - [Ingress concepts](https://kubernetes.io/docs/concepts/services-networking/ingress/)
+1. Understand and use [CoreDNS](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/)
+    - [DNS for Services and Pods](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/)
+    - [Using CoreDNS for service discovery](https://kubernetes.io/docs/tasks/administer-cluster/coredns/)
 
     - [Kubernetes Networking Intro and Deep-Dive - Bowei Du & Tim Hockin, Google](https://youtu.be/tq9ng_Nz9j8)
     - [Kubernetes and Networks: why is this so dang hard?](https://youtu.be/xB190-yyJnY?t=241)
     - [Kubecon Eu 2020 Tutorial: Communication Is Key - Understanding Kubernetes Networking - Jeff Poole, Vivint Smart Home](https://youtu.be/InZVNuKY5GY?list=PLj6h78yzYM2O1wlsM-Ma-RYhfT5LKq0XC)
 
+### Storage - 10%
 
-### Storage – 10%
-
-1. Understand [storage classes](https://kubernetes.io/docs/concepts/storage/storage-classes/), [persistent volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
-1. Understand [volume mode](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#volume-mode), [access modes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes) and [reclaim policies](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#reclaim-policy) for volumes
-1. Understand [persistent volume claims](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims) primitive
-1. Know how to [configure applications with persistent storage](https://kubernetes.io/docs/tasks/configure-pod-container/configure-volume-storage/)
+1. Implement [storage classes](https://kubernetes.io/docs/concepts/storage/storage-classes/) and [dynamic volume provisioning](https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/)
+1. Configure [volume types](https://kubernetes.io/docs/concepts/storage/volumes/), [volume mode](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#volume-mode), [access modes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes) and [reclaim policies](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#reclaim-policy)
+1. Manage [persistent volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) and [persistent volume claims](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims)
+    - [Configure a Pod to use a volume for storage](https://kubernetes.io/docs/tasks/configure-pod-container/configure-volume-storage/)
+    - [Volume snapshots](https://kubernetes.io/docs/concepts/storage/volume-snapshots/)
 
   <details>
   <summary> StorageClass, PersistentVolume, and PersitentVolumeClaim examples </summary>
@@ -208,18 +265,25 @@ These are the exam objectives you review and understand in order to pass the tes
   ```
 
   </p>
-  </details> 
+  </details>
 
-### Troubleshooting – 30%
+### Troubleshooting - 30%
 
-1. [Evaluate cluster and node logging](https://kubernetes.io/docs/concepts/cluster-administration/logging/)
-1. [Understand how to monitor applications](https://kubernetes.io/docs/tasks/debug-application-cluster/resource-usage-monitoring/)
-1. [Manage container stdout & stderr logs](https://kubernetes.io/docs/concepts/cluster-administration/logging/#logging-at-the-node-level)
-1. [Troubleshoot application failure](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/)
-   - [Pending or termintated pods](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#troubleshooting)
-1. [Troubleshoot cluster component failure](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-cluster/)
-1. [Troubleshoot networking](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-cluster/)
-   - [DNS troubleshooting](https://kubernetes.io/docs/tasks/administer-cluster/dns-debugging-resolution/)
+1. [Troubleshoot clusters and nodes](https://kubernetes.io/docs/tasks/debug/debug-cluster/)
+    - [Debugging a node with kubectl debug node](https://kubernetes.io/docs/tasks/debug/debug-cluster/kubectl-node-debug/)
+    - [System logs](https://kubernetes.io/docs/concepts/cluster-administration/system-logs/) - journalctl -u kubelet
+1. [Troubleshoot cluster components](https://kubernetes.io/docs/tasks/debug/debug-cluster/)
+    - static pod manifests in /etc/kubernetes/manifests/, and crictl ps / crictl logs when the API server is down
+1. [Monitor cluster and application resource usage](https://kubernetes.io/docs/tasks/debug/debug-cluster/resource-usage-monitoring/)
+    - [kubectl top](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_top/) - needs metrics-server
+    - [System metrics](https://kubernetes.io/docs/concepts/cluster-administration/system-metrics/)
+1. [Manage and evaluate container output streams](https://kubernetes.io/docs/concepts/cluster-administration/logging/)
+    - [Logging at the node level](https://kubernetes.io/docs/concepts/cluster-administration/logging/#logging-at-the-node-level)
+    - [Debug running pods](https://kubernetes.io/docs/tasks/debug/debug-application/debug-running-pod/)
+1. [Troubleshoot services and networking](https://kubernetes.io/docs/tasks/debug/debug-application/debug-service/)
+    - [Debug pods](https://kubernetes.io/docs/tasks/debug/debug-application/debug-pods/) - pending, crash-looping or terminated pods
+    - [Debug applications](https://kubernetes.io/docs/tasks/debug/debug-application/)
+    - [DNS troubleshooting](https://kubernetes.io/docs/tasks/administer-cluster/dns-debugging-resolution/)
 
 
 ## Tips:
