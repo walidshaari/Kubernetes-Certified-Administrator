@@ -13,7 +13,7 @@ Ensure you have the right version of Kubernetes documentation selected (e.g. v1.
 
 These are the exam objectives you review and understand in order to pass the test. The objectives are current as of December 12, 2017.
 
-* [CKAD v1.0 Curriculum](https://github.com/cncf/curriculum/blob/master/certified_kubernetes_application_developer_exam_v1.0.pdf)
+* [CKAD v1.0 Curriculum](https://github.com/cncf/curriculum/blob/master/CKAD_Curriculum_v1.35.pdf)
 
 ### [Core Concepts](https://kubernetes.io/docs/concepts/) 13%
 
@@ -31,7 +31,7 @@ These are the exam objectives you review and understand in order to pass the tes
     *[CPU](https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/)
     *[QoS](https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/)
 * [Create & consume Secrets](https://kubernetes.io/docs/concepts/configuration/secret/)    
-* [Understand ServiceAccounts](https://kubernetes.io/docs/admin/service-accounts-admin/)    
+* [Understand ServiceAccounts](https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/)    
 
 ### [Multi-Container Pods] 10%
 
@@ -71,7 +71,8 @@ These are the exam objectives you review and understand in order to pass the tes
 
 * [Demonstrate basic understanding of NetworkPolicies](https://kubernetes.io/docs/tasks/administer-cluster/declare-network-policy/)
   * [Blog: Kubernetes network policy](https://ahmet.im/blog/kubernetes-network-policy/)
-  * [Katacoda Calico](https://www.katacoda.com/projectcalico/scenarios/calico)
+  * [Calico documentation](https://docs.tigera.io/calico/latest/about/) (Katacoda shut down in 2022)
+  * [Killercoda CKAD playground](https://killercoda.com/killer-shell-ckad)
 
 
 ### [State Persistence] 8%
@@ -86,8 +87,8 @@ These are the exam objectives you review and understand in order to pass the tes
 ## Tips:
 
 get familiar with:
-* [kubectl explain](https://blog.heptio.com/kubectl-explain-heptioprotip-ee883992a243)
-* [kubectl cheatsheet](https://kubernetes.io/docs/user-guide/kubectl-cheatsheet/)
+* [kubectl explain](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_explain/)
+* [kubectl cheatsheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
 * When using kubecctl for investigations and troubleshooting utilize the wide output it gives your more details
 ```
      $kubectl get pods -o wide --show-labels --all-namespaces

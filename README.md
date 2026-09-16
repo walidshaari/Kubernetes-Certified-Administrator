@@ -119,7 +119,7 @@ These are the exam objectives you review and understand in order to pass the tes
   * [Kustomize](https://kubernetes.io/docs/tasks/manage-kubernetes-objects/kustomization/)
     - [Kustomize Blog](https://kubernetes.io/blog/2018/05/29/introducing-kustomize-template-free-configuration-customization-for-kubernetes/)
   * [manage kubernetes objects](https://kubernetes.io/docs/tasks/manage-kubernetes-objects/)
-  * [Install service catalog using helm](https://kubernetes.io/docs/tasks/service-catalog/install-service-catalog-using-helm/)
+  * [Helm - using Helm](https://helm.sh/docs/intro/using_helm/) (the Service Catalog page this used to link to was retired along with Service Catalog itself)
     - Non-k8s.io resource: CNCF Kubecon video: [An introduction to Helm - Bridget Kromhout, Microsoft & Marc Khouzam, City of Montreal](https://youtu.be/x2w6T0sE50w?list=PLj6h78yzYM2O1wlsM-Ma-RYhfT5LKq0XC)
    - Non-k8s.io resource: External resource: [templating-yaml-with-code](https://learnk8s.io/templating-yaml-with-code)
 
@@ -227,13 +227,13 @@ These are the exam objectives you review and understand in order to pass the tes
 **practice**                                           **practice**                                         **practice**
 
 Get familiar with:
-* Familiarize yourself with the documentation, initially [concepts](https://kubernetes.io/docs/concepts/)  and mostly [tasks](https://kubernetes.io/docs/tasks/), **kubectl explain** command, [kubectl cheatsheet](https://kubernetes.io/docs/user-guide/kubectl-cheatsheet/), and [kubectl commands reference](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands)
+* Familiarize yourself with the documentation, initially [concepts](https://kubernetes.io/docs/concepts/)  and mostly [tasks](https://kubernetes.io/docs/tasks/), **kubectl explain** command, [kubectl cheatsheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/), and [kubectl commands reference](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands)
   - https://kubernetes.io/docs/concepts/ 
   - https://kubernetes.io/docs/tasks/ 
-  - https://kubernetes.io/docs/user-guide/kubectl-cheatsheet/
+  - https://kubernetes.io/docs/reference/kubectl/cheatsheet/
   - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands
 *  `kubectl api-versions` and `kubectl  api-resources` wih `grep` for a specific resoruce e.g. pv, pvc, deployment, storageclass, ..etc can help figure out the **apiVersion**, and **kind** combined with explain below will help in constructing the yaml manifest
-* [kubectl explain --recursive](https://blog.heptio.com/kubectl-explain-heptioprotip-ee883992a243) to construct out any yaml manifest you need and find its specd and details
+* [kubectl explain --recursive](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_explain/) to construct out any yaml manifest you need and find its specd and details
 
 * When using kubectl for investigations and troubleshooting utilize the wide output it gives your more details
 ```
@@ -296,17 +296,15 @@ complete -F __start_kubectl k
 - [Killer.sh CKA simulator](https://killer.sh/cka)         &#x27F9; use code **walidshaari** for **20%** discount  - they update frequently
 - [AWS Container hero NANA CKA course](https://www.techworld-with-nana.com/kubernetes-administrator-cka)
 - [Kube Academy free How to prepare for the CKA exam training](https://kube.academy/courses/how-to-prepare-for-the-cka-exam)
-- [A Cloud Guru - Certified Kubernetes Administrator (CKA)](https://acloud.guru/overview/certified-kubernetes-administrator)
 - [Pluralsight CKA course](https://www.pluralsight.com/paths/certified-kubernetes-administrator) by [Anthony E. Nocentino
 ](https://twitter.com/nocentino)
-- [LinuxAcademy/ACloudGuru CKA course](https://acloud.guru/learn/7f5137aa-2d26-4b19-8d8c-025b22667e76)
 - [rx-m online CKA course](https://rx-m.com/cka-online-training/)
-- Duffie Cooly [hands-on CKA video](https://k8s.work/cka-lab.mp4) using KinD and accompanying [notes](https://hackmd.io/@mauilion/cka-lab)
+- Duffie Cooly hands-on CKA lab [notes](https://hackmd.io/@mauilion/cka-lab) using KinD (the accompanying k8s.work video is no longer hosted)
 - [Stilian Stoilov](https://www.linkedin.com/in/stilian-stoilov-379972a9/) [practice questions](https://github.com/StenlyTU/K8s-training-official) - 50+ tasks with increasing difficulty.
 - [Killercoda in-browser CKA Playground and Challenges](https://killercoda.com/killer-shell-cka) - FREE
 # Quick review material
-      
-- Adnan Rashisd CKA notes:  can be found at https://adnan.study/  
+
+- [Kubernetes docs - kubectl Quick Reference](https://kubernetes.io/docs/reference/kubectl/quick-reference/)
 # What's Next:
 - Learn more about Kubernetes core components from [Duffie Cooly](https://twitter.com/mauilion) [TGIK Grokking playlist](https://www.youtube.com/playlist?list=PL7bmigfV0EqS6WxgWlH-p4dhkfuwcZ6-E)
 - [CKAD Certified Kubernetes Application Developer](https://www.cncf.io/certification/ckad/)
