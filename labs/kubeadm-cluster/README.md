@@ -8,10 +8,41 @@
 
 ## Prerequisites
 
-1. Working Vagrant setup, tested with Virtualbox
+1. Working Vagrant setup. The upstream lab was tested with VirtualBox.
+   A libvirt/KVM provider is also configured, for Linux hosts where KVM is
+   the native choice - see below. The libvirt path has not been booted yet,
+   so treat it as untested.
 2. As configured in the Vagrantfile the three VMs use 4 vCPUs and 6 GB RAM in
    total (control plane 2 vCPU / 2 GB, each of the two workers 1 vCPU / 2 GB),
    so give the host at least 8 GB RAM.
+
+### Running on KVM/libvirt instead of VirtualBox
+
+On Fedora and most Linux hosts, KVM is built into the kernel, while VirtualBox
+needs out-of-tree modules that break across kernel updates and with Secure Boot.
+
+```bash
+sudo dnf install vagrant vagrant-libvirt libvirt libvirt-devel
+sudo systemctl enable --now libvirtd
+sudo usermod -aG libvirt $USER   # log out and back in
+cd labs/kubeadm-cluster
+vagrant up --provider=libvirt
+```
+
+Install `vagrant` and `vagrant-libvirt` **from the same source**. Mixing
+HashiCorp's vagrant RPM, which lives in `/opt/vagrant` with its own bundled
+gems, and Fedora's `vagrant-libvirt` package, which installs into
+`/usr/share/vagrant/gems`, leaves Vagrant unable to see the plugin:
+`vagrant plugin list` reports none and `vagrant up --provider=libvirt` fails
+with "The provider 'libvirt' could not be found". Either use Fedora's packages
+for both, or keep HashiCorp's vagrant and run
+`vagrant plugin install vagrant-libvirt`, which needs `libvirt-devel`,
+`ruby-devel` and a compiler to build its native extension.
+
+The Vagrantfile swaps the box for the libvirt provider, because the `bento`
+boxes it uses do not publish a libvirt variant. It also mounts `/vagrant` over
+9p so no NFS server is needed on the host; remove the `type` and `accessmode`
+options in the Vagrantfile to fall back to NFS.
 
 ## Usage/Examples
 
