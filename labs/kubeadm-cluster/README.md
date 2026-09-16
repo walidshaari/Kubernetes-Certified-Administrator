@@ -24,12 +24,11 @@ vagrant global-status    # Check if any vagrant machines are up and where
 vagrant up
 ```
 
-## Set Kubeconfig file varaible.
+## Set Kubeconfig file variable.
 
 ```bash
-cd vagrant-cka
 cd configs
-export KUBECONFIG=$(PWD)/config
+export KUBECONFIG=$(pwd)/config
 ```
 
 or you can copy the config file to .kube directory.
