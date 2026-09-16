@@ -24,7 +24,7 @@
 
 ## Quick tips
 
-* Ensure you are practicing using the right exam kubernetes version. as of  today, it is 1.21 and using the right 
+* Ensure you are practicing against the right Kubernetes version. The exam environment is Kubernetes v1.35 as of September 2026; confirm the current version before you sit it and select the matching version in the documentation.
 ![k8s docs](../../images/k8s-docs.png)
  
 * Ensure you address the right namespace and cluster always
@@ -46,13 +46,13 @@ alias k=kubectl
 complete -F __start_kubectl k
 ```
  
-* Familiarize yourself with the documentation, initially [concepts](https://kubernetes.io/docs/concepts/)  and mostly [tasks](https://kubernetes.io/docs/tasks/), **kubectl explain** command, [kubectl cheatsheet](https://kubernetes.io/docs/user-guide/kubectl-cheatsheet/), and [kubectl commands reference](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands)
+* Familiarize yourself with the documentation, initially [concepts](https://kubernetes.io/docs/concepts/)  and mostly [tasks](https://kubernetes.io/docs/tasks/), **kubectl explain** command, [kubectl cheatsheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/), and [kubectl commands reference](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands)
   - https://kubernetes.io/docs/concepts/ 
   - https://kubernetes.io/docs/tasks/ 
-  - https://kubernetes.io/docs/user-guide/kubectl-cheatsheet/
+  - https://kubernetes.io/docs/reference/kubectl/cheatsheet/
   - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands
 *  `kubectl api-versions` and `kubectl  api-resources` with `grep` for a specific resource, e.g., pv, pvc, deployment, storageclass, ..etc can help figure out the **apiVersion**, and **kind** combined with **explain** below will help in constructing the YAML manifest
-* [kubectl explain --recurisve](https://blog.heptio.com/kubectl-explain-heptioprotip-ee883992a243) to construct out any yaml manifest you need and find its specs and details 
+* [kubectl explain --recurisve](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_explain/) to construct out any yaml manifest you need and find its specs and details 
 * https://medium.com/nerd-for-tech/one-cka-ckad-cks-requirement-mastering-kubectl-85486bc0a3aa
 * VIM skills
   - ~/.vimrc to help with avoiding YAML mistakes 
