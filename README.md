@@ -415,7 +415,7 @@ complete -F __start_kubectl k
 ## Popular training and practice sites:
 *Double check if the course is uptodate with the latest exam information (e.g. api, or curriculum)*
 
-VMware's KubeAcademy has been retired ([notice](https://kube.academy/retirement)) and its free "How to prepare for the CKA exam" course was removed from this list. Every other link below was opened and serves a real course page.
+VMware's KubeAcademy has been retired ([notice](https://kube.academy/retirement)) and its free "How to prepare for the CKA exam" course was removed from this list. The remaining links were last checked in September 2026.
 
 - [Mumshad CKA with practice tests and mock exams](https://www.udemy.com/course/certified-kubernetes-administrator-with-practice-tests/) - Highly recommended
 - [Killer.sh CKA simulator](https://killer.sh/cka)         &#x27F9; use code **walidshaari** for **20%** discount  - they update frequently
