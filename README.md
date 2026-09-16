@@ -325,6 +325,8 @@ Domain weights are unchanged: Troubleshooting 30%, Cluster Architecture 25%, Ser
 
 ### Troubleshooting - 30%
 
+> For a full diagnostic method and practice scenarios, see [TROUBLESHOOTING.md](TROUBLESHOOTING.md).
+
 1. [Troubleshoot clusters and nodes](https://kubernetes.io/docs/tasks/debug/debug-cluster/)
     - [Debugging a node with kubectl debug node](https://kubernetes.io/docs/tasks/debug/debug-cluster/kubectl-node-debug/)
     - [System logs](https://kubernetes.io/docs/concepts/cluster-administration/system-logs/) - journalctl -u kubelet
