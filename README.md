@@ -208,10 +208,17 @@ Domain weights are unchanged: Troubleshooting 30%, Cluster Architecture 25%, Ser
   <summary> StorageClass, PersistentVolume, and PersistentVolumeClaim examples </summary>
   <p>
 
-  ```
+  ```yaml
   #### Storage Class example
   #
-
+  apiVersion: storage.k8s.io/v1
+  kind: StorageClass
+  metadata:
+    name: local-storage-sc
+  provisioner: kubernetes.io/no-provisioner   # local volumes have no dynamic provisioner
+  volumeBindingMode: WaitForFirstConsumer     # bind only when a Pod using the PVC is scheduled
+  reclaimPolicy: Retain
+  ---
   #### Persistent Volume Claim example
   #
   kind: PersistentVolumeClaim
@@ -225,7 +232,7 @@ Domain weights are unchanged: Troubleshooting 30%, Cluster Architecture 25%, Ser
     resources:
       requests:
         storage: 100Mi
-
+  ---
   ## Persistent Volume example
   #
   apiVersion: v1
@@ -242,7 +249,18 @@ Domain weights are unchanged: Troubleshooting 30%, Cluster Architecture 25%, Ser
     persistentVolumeReclaimPolicy: Retain
     storageClassName: local-storage-sc
     volumeMode: Filesystem
-  
+    # A local PersistentVolume is rejected without nodeAffinity:
+    # "You must set a PersistentVolume nodeAffinity when using local volumes."
+    # Replace <node-name> with the node holding /data/pv/disk021.
+    nodeAffinity:
+      required:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: kubernetes.io/hostname
+            operator: In
+            values:
+            - <node-name>
+  ---
   ###  Pod using the pvc
   #
   apiVersion: v1
