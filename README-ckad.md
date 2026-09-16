@@ -1,7 +1,7 @@
 
 # Certified Kubernetes Application Developer (CKAD)
 A  curated list of resources that will help you to face your Kubernetes certification. Based in the newest policy about 'Resources Allowed', current list will give preference
-to those materials coming from the allowed sources [kubernetes.io](kubernetes.io). Others like Youtube videos, blog resources could be referenced in expectional case due to I still found them useful in my k8s learning journey.
+to those materials coming from the allowed sources [kubernetes.io](https://kubernetes.io/docs/). Others like Youtube videos, blog resources could be referenced in expectional case due to I still found them useful in my k8s learning journey.
 
 
 _Before to start_ 
