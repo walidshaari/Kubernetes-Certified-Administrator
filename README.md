@@ -5,6 +5,16 @@
 
 Online resources that will help you prepare for taking the Kubernetes Certified Administrator Certification exam.
 
+## Study guides in this repo
+
+Beyond the curriculum links, these cover method: how to diagnose problems and how to study.
+
+- [TROUBLESHOOTING.md](TROUBLESHOOTING.md) - the first-moves reflex, a break-and-fix scenario bank, symptom table and practice questions for the 30% Troubleshooting domain
+- [Common misconceptions](docs/MISCONCEPTIONS.md) - things study material often gets wrong
+- [Exam-day tactics](docs/EXAM-DAY-TACTICS.md) - context switching, generating YAML, verifying, and using the simulator sessions well
+- [Study method](docs/STUDY-METHOD.md) - a learn, break, fix, log loop, with [note templates](templates/)
+- [Linux Foundation LF ACE path](docs/LF-ACE-PATH.md) - how LFS158, LFS253 and LFS258 map to the CKA domains
+
 **Disclaimer**: This is not likely a comprehensive list as the exam will be a moving target with the fast pace of k8s development - please make a pull request if there something wrong, should be added, or updated.
 
 I tried to restrict the cross references of resources to [kubernetes.io](https://kubernetes.io/docs/). Youtube videos and other blog resources are optional; however, I still found them useful in my k8s learning journey.
