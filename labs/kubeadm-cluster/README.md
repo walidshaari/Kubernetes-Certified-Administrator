@@ -55,9 +55,7 @@ for both, or keep HashiCorp's vagrant and run
 `ruby-devel` and a compiler to build its native extension.
 
 The Vagrantfile swaps the box for the libvirt provider, because the `bento`
-boxes it uses do not publish a libvirt variant. It also mounts `/vagrant` over
-9p so no NFS server is needed on the host; remove the `type` and `accessmode`
-options in the Vagrantfile to fall back to NFS.
+boxes it uses do not publish a libvirt variant.
 
 ## Usage/Examples
 
