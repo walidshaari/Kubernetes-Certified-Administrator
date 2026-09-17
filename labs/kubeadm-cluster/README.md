@@ -9,8 +9,10 @@
 ## Prerequisites
 
 1. Working Vagrant setup, tested with Virtualbox
-2. Memory greather  4 GByteRAM for the labs as the Vms use 4 vCPUS and 4 GB RAM
- 
+2. As configured in the Vagrantfile the three VMs use 4 vCPUs and 6 GB RAM in
+   total (control plane 2 vCPU / 2 GB, each of the two workers 1 vCPU / 2 GB),
+   so give the host at least 8 GB RAM.
+
 ## Usage/Examples
 
 To provision a cluster, execute the following commands.
@@ -36,21 +38,23 @@ or you can copy the config file to .kube directory.
 cp config ~/.kube/
 ```
 
-## Kubernetes Dashboard URL
+## What the control plane provisioning installs
 
-```bash
-http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/overview?namespace=kubernetes-dashboard
-```
+- Calico as the CNI plugin, pinned to a release that supports the cluster version
+- metrics-server from upstream, patched with `--kubelet-insecure-tls` so
+  `kubectl top` works against kubeadm's self-signed kubelet certificates
+- Helm, since "use Helm and Kustomize to install cluster components" is a
+  CKA Cluster Architecture objective
+- `etcdctl` and `etcdutl` in `/usr/local/bin`. Both are needed: etcdctl takes
+  the snapshot, etcdutl restores it, because `etcdctl snapshot restore` was
+  removed in etcd 3.6.
 
-## Kubernetes login token
-
-Vagrant up will create the admin user token and saves in the configs directory.
-
-```shell
-cd Kubernetes-Certified-Administrator/labs/kubeadm-cluster
-cd configs
-cat token
-```
+The Kubernetes Dashboard is no longer installed. The manifest this lab used
+(dashboard v2.0.0) does not run on current Kubernetes versions, and the
+dashboard's Helm repository has moved, so the install could not be verified.
+The Dashboard is not part of the CKA curriculum. If you want it back, install
+it yourself with Helm and add the admin-user ServiceAccount and
+ClusterRoleBinding.
 
 ## To shutdown the cluster, 
 
