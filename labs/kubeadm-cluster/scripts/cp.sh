@@ -5,6 +5,15 @@ CP_IP="10.0.0.10"
 NODENAME=$(hostname -s)
 POD_CIDR="192.168.0.0/16"
 
+# Pinned addon versions. Calico v3.32 is tested against Kubernetes 1.34-1.36;
+# the old unpinned docs.projectcalico.org manifest still resolves but serves
+# Calico v3.25.0, which does not support Kubernetes 1.35.
+CALICO_VERSION="v3.32.2"
+METRICS_SERVER_VERSION="v0.9.0"
+# etcd 3.6 ships etcdutl, which is required for snapshot restore
+# (etcdctl snapshot restore was removed in etcd 3.6).
+ETCD_VERSION="v3.6.6"
+
 sudo kubeadm config images pull
 
 echo "Preflight Check Passed: Downloaded All Required Images"
@@ -37,61 +46,32 @@ kubeadm token create --print-join-command > /vagrant/configs/join.sh
 
 # Install Calico Network Plugin
 
-curl https://docs.projectcalico.org/manifests/calico.yaml -LO
+curl -fsSLO "https://raw.githubusercontent.com/projectcalico/calico/${CALICO_VERSION}/manifests/calico.yaml"
 
 kubectl apply -f calico.yaml
 
-# Install Metrics Server
+# Install Metrics Server (upstream release rather than a third-party copy).
+# kubeadm issues self-signed kubelet serving certificates, so metrics-server
+# has to be told not to verify them or `kubectl top` never reports metrics.
 
-kubectl apply -f https://raw.githubusercontent.com/scriptcamp/kubeadm-scripts/main/manifests/metrics-server.yaml
+kubectl apply -f "https://github.com/kubernetes-sigs/metrics-server/releases/download/${METRICS_SERVER_VERSION}/components.yaml"
 
-# Install Kubernetes Dashboard
+kubectl -n kube-system patch deployment metrics-server --type=json \
+  -p='[{"op":"add","path":"/spec/template/spec/containers/0/args/-","value":"--kubelet-insecure-tls"}]'
 
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
+# Install Helm. "Use Helm and Kustomize to install cluster components" is a
+# Cluster Architecture item in the CKA curriculum, so the lab ships with it.
 
-# Create Dashboard User
+curl -fsSL https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 
-cat <<EOF | kubectl apply -f -
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: admin-user
-  namespace: kubernetes-dashboard
-EOF
-
-cat <<EOF | kubectl apply -f -
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: admin-user
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: cluster-admin
-subjects:
-- kind: ServiceAccount
-  name: admin-user
-  namespace: kubernetes-dashboard
-EOF
-
-cat <<EOF | kubectl apply -f -
-apiVersion: v1
-kind: Secret
-metadata:
-  name: admin-user
-  namespace: kubernetes-dashboard
-  annotations:
-    kubernetes.io/service-account.name: "admin-user"
-type: kubernetes.io/service-account-token
-EOF
+# etcd client tooling. Install both binaries: etcdctl takes the snapshot,
+# etcdutl restores it and reports its status.
 
 arch=$(dpkg --print-architecture)
-cd /tmp/ && wget -q https://github.com/etcd-io/etcd/releases/download/v3.4.16/etcd-v3.4.16-linux-${arch}.tar.gz
-tar zxvf etcd-v3.4.16-linux-${arch}.tar.gz
-cd etcd-v3.4.16-linux-${arch}
-sudo cp etcdctl /usr/local/bin
-
-kubectl get secret admin-user -n kubernetes-dashboard -o go-template="{{.data.token | base64decode}}" >> /vagrant/configs/token
+cd /tmp/ && wget -q "https://github.com/etcd-io/etcd/releases/download/${ETCD_VERSION}/etcd-${ETCD_VERSION}-linux-${arch}.tar.gz"
+tar zxf "etcd-${ETCD_VERSION}-linux-${arch}.tar.gz"
+cd "etcd-${ETCD_VERSION}-linux-${arch}"
+sudo cp etcdctl etcdutl /usr/local/bin
 
 sudo -i -u vagrant bash << EOF
 mkdir -p /home/vagrant/.kube

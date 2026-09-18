@@ -1,7 +1,7 @@
 
 # Certified Kubernetes Application Developer (CKAD)
 A  curated list of resources that will help you to face your Kubernetes certification. Based in the newest policy about 'Resources Allowed', current list will give preference
-to those materials coming from the allowed sources [kubernetes.io](kubernetes.io). Others like Youtube videos, blog resources could be referenced in expectional case due to I still found them useful in my k8s learning journey.
+to those materials coming from the allowed sources [kubernetes.io](https://kubernetes.io/docs/). Others like Youtube videos, blog resources could be referenced in expectional case due to I still found them useful in my k8s learning journey.
 
 
 _Before to start_ 
@@ -13,15 +13,15 @@ Ensure you have the right version of Kubernetes documentation selected (e.g. v1.
 
 These are the exam objectives you review and understand in order to pass the test. The objectives are current as of December 12, 2017.
 
-* [CKAD v1.0 Curriculum](https://github.com/cncf/curriculum/blob/master/certified_kubernetes_application_developer_exam_v1.0.pdf)
+* [CKAD v1.0 Curriculum](https://github.com/cncf/curriculum/blob/master/CKAD_Curriculum_v1.35.pdf)
 
 ### [Core Concepts](https://kubernetes.io/docs/concepts/) 13%
 
-* [Understand the Kubernetes API primitives](https://v1-9.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.9/)
+* [Understand the Kubernetes API primitives](https://kubernetes.io/docs/reference/kubernetes-api/)
 * [Create and configure basic Pods](https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/)
 
 
-### [Configuration](https://v1-9.docs.kubernetes.io/docs/reference/generated/kubernetes-api/v1.9/#-strong-config-storage-strong-) 18%
+### [Configuration](https://kubernetes.io/docs/reference/kubernetes-api/config-and-storage-resources/config-map-v1/) 18%
 
 * Understand ConfigMaps
     * [Configure a Pod to Use a ConfigMap](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/)
@@ -31,7 +31,7 @@ These are the exam objectives you review and understand in order to pass the tes
     *[CPU](https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/)
     *[QoS](https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/)
 * [Create & consume Secrets](https://kubernetes.io/docs/concepts/configuration/secret/)    
-* [Understand ServiceAccounts](https://kubernetes.io/docs/admin/service-accounts-admin/)    
+* [Understand ServiceAccounts](https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/)    
 
 ### [Multi-Container Pods] 10%
 
@@ -71,7 +71,8 @@ These are the exam objectives you review and understand in order to pass the tes
 
 * [Demonstrate basic understanding of NetworkPolicies](https://kubernetes.io/docs/tasks/administer-cluster/declare-network-policy/)
   * [Blog: Kubernetes network policy](https://ahmet.im/blog/kubernetes-network-policy/)
-  * [Katacoda Calico](https://www.katacoda.com/projectcalico/scenarios/calico)
+  * [Calico documentation](https://docs.tigera.io/calico/latest/about/) (Katacoda shut down in 2022)
+  * [Killercoda CKAD playground](https://killercoda.com/killer-shell-ckad)
 
 
 ### [State Persistence] 8%
@@ -86,8 +87,8 @@ These are the exam objectives you review and understand in order to pass the tes
 ## Tips:
 
 get familiar with:
-* [kubectl explain](https://blog.heptio.com/kubectl-explain-heptioprotip-ee883992a243)
-* [kubectl cheatsheet](https://kubernetes.io/docs/user-guide/kubectl-cheatsheet/)
+* [kubectl explain](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_explain/)
+* [kubectl cheatsheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
 * When using kubecctl for investigations and troubleshooting utilize the wide output it gives your more details
 ```
      $kubectl get pods -o wide --show-labels --all-namespaces
@@ -98,7 +99,7 @@ get familiar with:
 ```
      $kubectl describe pods <PODID>
 ```
-* the '-o yaml' in conjuction with `--dry-run` allows you to create a manifest template from an imperative spec, combined with `--edit` it allows you to modify the object before creation
+* the '-o yaml' in conjunction with `--dry-run` allows you to create a manifest template from an imperative spec, combined with `--edit` it allows you to modify the object before creation
 ```
 kubectl create service clusterip my-svc -o yaml --dry-run > /tmp/srv.yaml
 kubectl create --edit -f /tmp/srv.yaml
