@@ -436,6 +436,7 @@ VMware's KubeAcademy has been retired ([notice](https://kube.academy/retirement)
 # Quick review material
 
 - [Kubernetes docs - kubectl Quick Reference](https://kubernetes.io/docs/reference/kubectl/quick-reference/)
+- [DailyDebian - kubectl cheat sheet (free PDF)](https://dailydebian.com/blogs/cheat-sheets/kubectl-cheat-sheet)
 # What's Next:
 - Learn more about Kubernetes core components from [Duffie Cooly](https://twitter.com/mauilion) [TGIK Grokking playlist](https://www.youtube.com/playlist?list=PL7bmigfV0EqS6WxgWlH-p4dhkfuwcZ6-E)
 - [CKAD Certified Kubernetes Application Developer](https://www.cncf.io/certification/ckad/)
