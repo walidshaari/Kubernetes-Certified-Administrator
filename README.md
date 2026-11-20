@@ -433,6 +433,7 @@ VMware's KubeAcademy has been retired ([notice](https://kube.academy/retirement)
 - Duffie Cooly hands-on CKA lab [notes](https://hackmd.io/@mauilion/cka-lab) using KinD (the accompanying k8s.work video is no longer hosted)
 - [Stilian Stoilov](https://www.linkedin.com/in/stilian-stoilov-379972a9/) [practice questions](https://github.com/StenlyTU/K8s-training-official) - 50+ tasks with increasing difficulty.
 - [Killercoda in-browser CKA Playground and Challenges](https://killercoda.com/killer-shell-cka) - FREE
+- [The Work Gym Kubernetes course](https://theworkgym.com/kubernetes/) - kubectl tasks on a browser cluster, mapped to the CKA and CKAD domains on [this page](https://theworkgym.com/certifications/kubernetes-cka-ckad/); first unit free.
 # Quick review material
 
 - [Kubernetes docs - kubectl Quick Reference](https://kubernetes.io/docs/reference/kubectl/quick-reference/)
